@@ -26,6 +26,7 @@ public class Lab1_2 {
         vect2.addArray(a);   
         vect2.addArray(a);  
         vect2.addArray(a);  
+        vect2.addArray(vect1); 
         vect2.showArray();
     }
     

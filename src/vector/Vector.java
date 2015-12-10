@@ -41,13 +41,31 @@ public class Vector {
                 buf[i]=mas[i];                
             }
             mas = new double[mas.length + m.length];
-            for(int i = 0; i<this.pos; i++){
+            for(int i = 0; i<this.pos+1; i++){
                 mas[i] = buf[i];
             }
         }
         int i;
         for(i = 0; i< m.length; i++){
             mas[i+(pos+1)] = m[i];
+        }
+        pos=pos+i;
+    }
+    
+    public void addArray(Vector m){
+      if ((mas.length-pos)<=m.mas.length){
+            buf = new double[mas.length];
+            for(int i = 0; i<mas.length; i++){
+                buf[i]=mas[i];                
+            }
+            mas = new double[mas.length + m.mas.length];
+            for(int i = 0; i<this.pos+1; i++){
+                mas[i] = buf[i];
+            }
+        }
+        int i;
+        for(i = 0; i< m.mas.length; i++){
+            mas[i+(pos+1)] = m.mas[i];
         }
         pos=pos+i;
     }
