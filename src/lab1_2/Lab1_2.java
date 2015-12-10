@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package lab1_2;
-
+import vector.*;
 /**
  *
  * @author User
@@ -15,7 +15,11 @@ public class Lab1_2 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Vector vect1 = new Vector(2);
+        vect1.addElement(2.1);
+        vect1.addElement(2.1);
+        vect1.addElement(2.1);
+        vect1.showArray();
     }
     
 }
