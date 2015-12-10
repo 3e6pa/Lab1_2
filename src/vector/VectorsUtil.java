@@ -9,17 +9,12 @@ package vector;
  *
  * @author User
  */
-public class VectorsUtil extends Vector { 
-    public VectorsUtil(int size) {
-        super(size);
-        this.mas = new double[size];
-        
-    }
+public class VectorsUtil { 
     
     public static void sort(Vector m) {
-        for (int i = 0; i < m.mas.length; i++) {
-            for (int j = 0; j < m.mas.length - i - 1; j++) {
-                if (m.mas[j] > m.mas[j + 1]) {
+        for (int i = 0; i < m.size(); i++) {
+            for (int j = 0; j < m.size() - i - 1; j++) {
+                if (m.getElement[j] > m.mas[j + 1]) {
                     double temp = m.mas[j];
                     m.mas[j] = m.mas[j + 1];
                     m.mas[j + 1] = temp;

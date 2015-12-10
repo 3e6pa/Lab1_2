@@ -58,6 +58,14 @@ public class Lab1_2 {
         
         VectorsUtil.sort(vect2);
         vect2.showArray();
+        
+        vect1.mul(10);
+        vect1.showArray();
+        
+       /* Vector vectorsSum = new Vector(10);
+        vectorsSum = vect1.sum(vect2);*/
+       
+       double scalar = vect1.scalar(vect2);
     }
 
 }

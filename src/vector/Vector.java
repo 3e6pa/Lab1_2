@@ -15,7 +15,7 @@ public class Vector {
      * class fields must be private!
      *
      */
-    protected double[] mas;
+    private double[] mas;
     private double[] buf; // bad practice. if we have 5 millions elements, your Vector will use memory for 10 millions elements.
     private int pos;
 
@@ -135,6 +135,20 @@ public class Vector {
             }
         }
         return min;
+    }
+    
+    public void mul(double val){
+        for(int i = 0; i<mas.length; i++){
+            mas[i]=mas[i]*val;
+        }
+    }
+    
+   /* public Vector sum(Vector m){
+    }*/
+    
+    public double scalar(Vector m){
+        int size = size(m.mas);
+        
     }
 
     public void showArray() {
