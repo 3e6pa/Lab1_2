@@ -23,7 +23,7 @@ public class Lab1_2 {
         vect1.addElement(-100);
         vect1.showArray();
 
-        double[] a = {1, 2, 3};
+        double[] a = {5, 2, 3};
         Vector vect2 = new Vector(10);
         vect2.addArray(a);
         vect2.addArray(a);
@@ -55,6 +55,9 @@ public class Lab1_2 {
         
         double newMin = vect2.getElement(vect2.minPos());
         System.out.println("Min value vector2 from pos = "+newMin);
+        
+        VectorsUtil.sort(vect2);
+        vect2.showArray();
     }
 
 }
