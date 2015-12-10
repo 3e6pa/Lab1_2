@@ -79,6 +79,10 @@ public class Vector {
             return 2;
         }
     }
+    
+    public double getElement(int index){
+        return mas[index];
+    }
 
     public void showArray() {
         for (int i = 0; i < mas.length; i++) {

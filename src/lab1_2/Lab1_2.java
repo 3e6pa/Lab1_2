@@ -38,6 +38,8 @@ public class Lab1_2 {
         } else if (vect1.compare(vect2) == 2){
             System.out.println("vector1 a less than vector2");
         }
+        double d = vect1.getElement(1);
+        System.out.println("1 = "+d);
     }
 
 }
