@@ -18,12 +18,12 @@ public class Lab1_2 {
      */
     public static void main(String[] args) {
         Vector vect1 = new Vector(2);
-        vect1.addElement(2.1);
-        vect1.addElement(2.1);
-        vect1.addElement(2.1);
+        vect1.addElement(-10);
+        vect1.addElement(-1);
+        vect1.addElement(-100);
         vect1.showArray();
 
-        double[] a = {1, 2, 3, 4, 5};
+        double[] a = {1, 2, 3};
         Vector vect2 = new Vector(10);
         vect2.addArray(a);
         vect2.addArray(a);
@@ -49,6 +49,12 @@ public class Lab1_2 {
         
         double min = vect2.min();
         System.out.println("Min value vector2 = "+min);
+        
+        double newMax = vect2.getElement(vect2.maxPos());
+        System.out.println("Max value vector2 from pos = "+newMax);
+        
+        double newMin = vect2.getElement(vect2.minPos());
+        System.out.println("Min value vector2 from pos = "+newMin);
     }
 
 }

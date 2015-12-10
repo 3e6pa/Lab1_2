@@ -11,10 +11,10 @@ package vector;
  */
 public class Vector {
 
-/**
- * class fields must be private! 
- * 
- */
+    /**
+     * class fields must be private!
+     *
+     */
     double[] mas;
     double[] buf; // bad practice. if we have 5 millions elements, your Vector will use memory for 10 millions elements.
     int pos;
@@ -85,31 +85,56 @@ public class Vector {
     }
 
     public double getElement(int index) {// what will be if i ask element with larger index than array size?
-        return mas[index];
+        if (index > mas.length) {
+            System.out.print("Out of range");
+            return mas.length;
+        } else {
+            return mas[index];
+        }
     }
 
     public int size() {
         return mas.length;
     }
-    
-    public double max(){ // try this code with array {-10,-1,-100}
-        int max=0;
-        for(int i =0; i<mas.length; i++){
-            if (mas[i]>mas[max]){
-                max=i;
+
+    public double max() { // try this code with array {-10,-1,-100}
+        int max = 0;
+        for (int i = 0; i < mas.length; i++) {
+            if (mas[i] > mas[max]) {
+                max = i;
             }
         }
         return mas[max];
     }
-    
-    public double min(){ // try this code with array { 1,2,3 }
-        int min=0;
-        for(int i =0; i<mas.length; i++){
-            if (mas[i]<mas[min]){
-                min=i;
+
+    public double min() { // try this code with array { 1,2,3 }
+        int min = 0;
+        for (int i = 0; i < mas.length; i++) {
+            if (mas[i] < mas[min]) {
+                min = i;
             }
         }
         return mas[min];
+    }
+
+    public int maxPos() {
+        int max = 0;
+        for (int i = 0; i < mas.length; i++) {
+            if (mas[i] > mas[max]) {
+                max = i;
+            }
+        }
+        return max;
+    }
+
+    public int minPos() {
+        int min = 0;
+        for (int i = 0; i < mas.length; i++) {
+            if (mas[i] < mas[min]) {
+                min = i;
+            }
+        }
+        return min;
     }
 
     public void showArray() {
