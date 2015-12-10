@@ -43,6 +43,12 @@ public class Lab1_2 {
         
         int size = vect2.size();
         System.out.println("Size vector2 = "+size);
+        
+        double max = vect2.max();
+        System.out.println("Max value vector2 = "+max);
+        
+        double min = vect2.min();
+        System.out.println("Min value vector2 = "+min);
     }
 
 }

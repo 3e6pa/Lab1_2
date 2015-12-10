@@ -79,13 +79,33 @@ public class Vector {
             return 2;
         }
     }
-    
-    public double getElement(int index){
+
+    public double getElement(int index) {
         return mas[index];
     }
-    
-    public int size(){
+
+    public int size() {
         return mas.length;
+    }
+    
+    public double max(){
+        int max=0;
+        for(int i =0; i<mas.length; i++){
+            if (mas[i]>mas[max]){
+                max=i;
+            }
+        }
+        return mas[max];
+    }
+    
+    public double min(){
+        int min=0;
+        for(int i =0; i<mas.length; i++){
+            if (mas[i]<mas[min]){
+                min=i;
+            }
+        }
+        return mas[min];
     }
 
     public void showArray() {
