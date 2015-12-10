@@ -40,6 +40,9 @@ public class Lab1_2 {
         }
         double d = vect1.getElement(1);
         System.out.println("1 = "+d);
+        
+        int size = vect2.size();
+        System.out.println("Size vector2 = "+size);
     }
 
 }
