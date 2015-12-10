@@ -15,9 +15,9 @@ public class Vector {
      * class fields must be private!
      *
      */
-    double[] mas;
-    double[] buf; // bad practice. if we have 5 millions elements, your Vector will use memory for 10 millions elements.
-    int pos;
+    private double[] mas;
+    private double[] buf; // bad practice. if we have 5 millions elements, your Vector will use memory for 10 millions elements.
+    private int pos;
 
     public Vector(int size) {
         mas = new double[size];
