@@ -21,8 +21,8 @@ public class Vector {
     }
 
     public void addElement(double val) {
-        if (pos+1 == mas.length) {
-            buf = new double[pos+1];
+        if (pos + 1 == mas.length) {
+            buf = new double[pos + 1];
             for (int i = 0; i < mas.length; i++) {
                 buf[i] = mas[i];
             }
@@ -33,41 +33,51 @@ public class Vector {
         }
         mas[++pos] = val;
     }
-    
-    public void addArray(double m[]){
-        if ((mas.length-pos)<=m.length){
+
+    public void addArray(double m[]) {
+        if ((mas.length - pos) <= m.length) {
             buf = new double[mas.length];
-            for(int i = 0; i<mas.length; i++){
-                buf[i]=mas[i];                
+            for (int i = 0; i < mas.length; i++) {
+                buf[i] = mas[i];
             }
             mas = new double[mas.length + m.length];
-            for(int i = 0; i<this.pos+1; i++){
+            for (int i = 0; i < this.pos + 1; i++) {
                 mas[i] = buf[i];
             }
         }
         int i;
-        for(i = 0; i< m.length; i++){
-            mas[i+(pos+1)] = m[i];
+        for (i = 0; i < m.length; i++) {
+            mas[i + (pos + 1)] = m[i];
         }
-        pos=pos+i;
+        pos = pos + i;
     }
-    
-    public void addArray(Vector m){
-      if ((mas.length-pos)<=m.mas.length){
+
+    public void addArray(Vector m) {
+        if ((mas.length - pos) <= m.mas.length) {
             buf = new double[mas.length];
-            for(int i = 0; i<mas.length; i++){
-                buf[i]=mas[i];                
+            for (int i = 0; i < mas.length; i++) {
+                buf[i] = mas[i];
             }
             mas = new double[mas.length + m.mas.length];
-            for(int i = 0; i<this.pos+1; i++){
+            for (int i = 0; i < this.pos + 1; i++) {
                 mas[i] = buf[i];
             }
         }
         int i;
-        for(i = 0; i< m.mas.length; i++){
-            mas[i+(pos+1)] = m.mas[i];
+        for (i = 0; i < m.mas.length; i++) {
+            mas[i + (pos + 1)] = m.mas[i];
         }
-        pos=pos+i;
+        pos = pos + i;
+    }
+
+    public int compare(Vector m) {
+        if (mas.length == m.mas.length) {
+            return 0;
+        } else if (mas.length > m.mas.length) {
+            return 1;
+        } else {
+            return 2;
+        }
     }
 
     public void showArray() {
@@ -75,7 +85,7 @@ public class Vector {
             System.out.print(mas[i] + " ");
         }
         System.out.println();
-     /*   for (int i = 0; i < buf.length; i++) {
+        /*   for (int i = 0; i < buf.length; i++) {
        *     System.out.print(buf[i] + " ");
         }*/
     }
