@@ -33,11 +33,30 @@ public class Vector {
         }
         mas[++pos] = val;
     }
+    
+    public void addArray(double m[]){
+        if ((mas.length-pos)<=m.length){
+            buf = new double[mas.length];
+            for(int i = 0; i<mas.length; i++){
+                buf[i]=mas[i];                
+            }
+            mas = new double[mas.length + m.length];
+            for(int i = 0; i<this.pos; i++){
+                mas[i] = buf[i];
+            }
+        }
+        int i;
+        for(i = 0; i< m.length; i++){
+            mas[i+(pos+1)] = m[i];
+        }
+        pos=pos+i;
+    }
 
     public void showArray() {
         for (int i = 0; i < mas.length; i++) {
             System.out.print(mas[i] + " ");
         }
+        System.out.println();
      /*   for (int i = 0; i < buf.length; i++) {
        *     System.out.print(buf[i] + " ");
         }*/

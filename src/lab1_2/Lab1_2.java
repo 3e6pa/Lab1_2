@@ -18,8 +18,15 @@ public class Lab1_2 {
         Vector vect1 = new Vector(2);
         vect1.addElement(2.1);
         vect1.addElement(2.1);
-        vect1.addElement(2.1);
+        vect1.addElement(2.1);     
         vect1.showArray();
+        
+        double[] a = {1,2,3,4,5};
+        Vector vect2 = new Vector(10);
+        vect2.addArray(a);   
+        vect2.addArray(a);  
+        vect2.addArray(a);  
+        vect2.showArray();
     }
     
 }
