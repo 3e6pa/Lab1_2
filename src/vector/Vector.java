@@ -11,8 +11,12 @@ package vector;
  */
 public class Vector {
 
+/**
+ * class fields must be private! 
+ * 
+ */
     double[] mas;
-    double[] buf;
+    double[] buf; // bad practice. if we have 5 millions elements, your Vector will use memory for 10 millions elements.
     int pos;
 
     public Vector(int size) {
@@ -21,7 +25,7 @@ public class Vector {
     }
 
     public void addElement(double val) {
-        if (pos + 1 == mas.length) {
+        if (pos + 1 == mas.length) { // look at this part of code
             buf = new double[pos + 1];
             for (int i = 0; i < mas.length; i++) {
                 buf[i] = mas[i];
@@ -35,7 +39,7 @@ public class Vector {
     }
 
     public void addArray(double m[]) {
-        if ((mas.length - pos) <= m.length) {
+        if ((mas.length - pos) <= m.length) { // and this. This are similar code. you can optimize it.
             buf = new double[mas.length];
             for (int i = 0; i < mas.length; i++) {
                 buf[i] = mas[i];
@@ -53,7 +57,7 @@ public class Vector {
     }
 
     public void addArray(Vector m) {
-        if ((mas.length - pos) <= m.mas.length) {
+        if ((mas.length - pos) <= m.mas.length) { // third piece of similar code
             buf = new double[mas.length];
             for (int i = 0; i < mas.length; i++) {
                 buf[i] = mas[i];
@@ -80,7 +84,7 @@ public class Vector {
         }
     }
 
-    public double getElement(int index) {
+    public double getElement(int index) {// what will be if i ask element with larger index than array size?
         return mas[index];
     }
 
@@ -88,7 +92,7 @@ public class Vector {
         return mas.length;
     }
     
-    public double max(){
+    public double max(){ // try this code with array {-10,-1,-100}
         int max=0;
         for(int i =0; i<mas.length; i++){
             if (mas[i]>mas[max]){
@@ -98,7 +102,7 @@ public class Vector {
         return mas[max];
     }
     
-    public double min(){
+    public double min(){ // try this code with array { 1,2,3 }
         int min=0;
         for(int i =0; i<mas.length; i++){
             if (mas[i]<mas[min]){
