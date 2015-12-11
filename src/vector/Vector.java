@@ -16,7 +16,6 @@ public class Vector {
      *
      */
     private double[] mas;
-    private double[] buf; // bad practice. if we have 5 millions elements, your Vector will use memory for 10 millions elements.
     private int pos;
 
     public Vector(int size) {
@@ -25,45 +24,22 @@ public class Vector {
     }
 
     public void addElement(double val) {
-        if (pos + 1 == mas.length) { // look at this part of code
-            buf = new double[pos + 1];
-            for (int i = 0; i < mas.length; i++) {
-                buf[i] = mas[i];
-            }
-            mas = new double[pos + 2];
-            for (int i = 0; i < buf.length; i++) {
-                mas[i] = buf[i];
-            }
+        if (pos + 1 == mas.length) {
+            incArray(pos + 2);
         }
         mas[++pos] = val;
     }
-    
+
     public void addElement(double val, int index) {
         if (index > mas.length) { // look at this part of code
-            buf = new double[index + 1];
-            for (int i = 0; i < mas.length; i++) {
-                buf[i] = mas[i];
-            }
-            mas = new double[index + 2];
-            for (int i = 0; i < buf.length; i++) {
-                mas[i] = buf[i];
-            }
+            incArray(index);
         }
         mas[index] = val;
     }
-    
-    
 
     public void addArray(double m[]) {
         if ((mas.length - pos) <= m.length) { // and this. This are similar code. you can optimize it.
-            buf = new double[mas.length];
-            for (int i = 0; i < mas.length; i++) {
-                buf[i] = mas[i];
-            }
-            mas = new double[mas.length + m.length];
-            for (int i = 0; i < this.pos + 1; i++) {
-                mas[i] = buf[i];
-            }
+            incArray(mas.length + m.length);
         }
         int i;
         for (i = 0; i < m.length; i++) {
@@ -74,20 +50,25 @@ public class Vector {
 
     public void addArray(Vector m) {
         if ((mas.length - pos) <= m.mas.length) { // third piece of similar code
-            buf = new double[mas.length];
-            for (int i = 0; i < mas.length; i++) {
-                buf[i] = mas[i];
-            }
-            mas = new double[mas.length + m.mas.length];
-            for (int i = 0; i < this.pos + 1; i++) {
-                mas[i] = buf[i];
-            }
+            incArray(mas.length + m.size());
         }
         int i;
         for (i = 0; i < m.mas.length; i++) {
             mas[i + (pos + 1)] = m.mas[i];
         }
         pos = pos + i;
+    }
+
+    void incArray(int size) {
+        double[] buf = new double[mas.length];
+        for (int i = 0; i < mas.length; i++) {
+            buf[i] = mas[i];
+        }
+        mas = new double[size];
+        for (int i = 0; i < buf.length; i++) {
+            mas[i] = buf[i];
+        }
+        buf = new double[0];
     }
 
     public int compare(Vector m) {
@@ -152,21 +133,19 @@ public class Vector {
         }
         return min;
     }
-    
-    public void mul(double val){
-        for(int i = 0; i<mas.length; i++){
-            mas[i]=mas[i]*val;
+
+    public void mul(double val) {
+        for (int i = 0; i < mas.length; i++) {
+            mas[i] = mas[i] * val;
         }
     }
-    
-   /* public Vector sum(Vector m){
+
+    /* public Vector sum(Vector m){
     }*/
-    
-  /*  public double scalar(Vector m){
+ /*  public double scalar(Vector m){
         int size = size(m.mas);
         
     }*/
-
     public void showArray() {
         for (int i = 0; i < mas.length; i++) {
             System.out.print(mas[i] + " ");
@@ -177,4 +156,3 @@ public class Vector {
         }*/
     }
 }
-
