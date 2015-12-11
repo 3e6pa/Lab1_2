@@ -104,6 +104,16 @@ public class Vector {
         }
     }
 
+    int minSize(Vector m) {
+        if (mas.length == m.size()) {
+            return m.size();
+        } else if (mas.length < m.size()) {
+            return mas.length;
+        } else {
+            return m.size();
+        }
+    }
+
     public double max() {
         int max = 0;
         for (int i = 0; i < mas.length; i++) {
@@ -152,61 +162,37 @@ public class Vector {
 
     public Vector sum(Vector m) {
         Vector result = new Vector(maxSize(m));
-        double[] buf = new double[maxSize(m)];
-        if (mas.length > m.size()) {// bad code. think more and you must rewrite it.
-            int temp = 0;
-            for (int i = 0; i < m.size(); i++) {
-                buf[i] = mas[i] + m.getElement(i);
-                temp = i + 1;
-            }
-            for (int i = 0; i < maxSize(m) - temp; i++) {
-                buf[i + temp] = mas[i + temp];
-            }
-        } else {
-            int temp = 0;
-            for (int i = 0; i < mas.length; i++) {
-                buf[i] = mas[i] + m.getElement(i);
-                temp = i + 1;
-            }
-            for (int i = 0; i < maxSize(m) - temp; i++) {
-                buf[i + temp] = m.getElement(i + temp);
-            }
+        Vector buf1 = new Vector(maxSize(m));
+        Vector buf2 = new Vector(maxSize(m));
+        buf1.addArray(mas);
+        buf2.addArray(m);
+        for (int i = 0; i < maxSize(m); i++) {
+            result.addElement((buf1.getElement(i) + buf2.getElement(i)), i);
         }
-        result.addArray(buf);
-        buf = new double[0];
+        buf1 = new Vector(0);
+        buf2 = new Vector(0);
         return result;
     }
 
     public double scalar(Vector m) {
-        double[] buf = new double[maxSize(m)];
-        // bad code. think!
-        if (mas.length > m.size()) {
-            int temp = 0;
-
-            for (int i = 0; i < m.size(); i++) {
-                buf[i] = mas[i] * m.getElement(i);
-                temp = i + 1;
-            }
-            for (int i = 0; i < maxSize(m) - temp; i++) {
-                buf[i + temp] = mas[i + temp];
+        Vector buf = new Vector(maxSize(m));
+        for (int i = 0; i < minSize(m); i++) {
+            buf.addElement(mas[i] * m.getElement(i), i);
+        }
+        if (maxSize(m) == mas.length) {
+            for (int i = 0; i < maxSize(m) - minSize(m); i++) {
+                buf.addElement(mas[i+minSize(m)], i+minSize(m));
             }
         } else {
-            int temp = 0;
-            for (int i = 0; i < mas.length; i++) {
-                buf[i] = mas[i] * m.getElement(i);
-                temp = i + 1;
-            }
-            for (int i = 0; i < maxSize(m) - temp; i++) {
-                buf[i + temp] = m.getElement(i + temp);
+             for (int i = 0; i < maxSize(m) - minSize(m); i++) {
+                buf.addElement(m.getElement(i+minSize(m)), i+minSize(m));
             }
         }
-
-        double tempScalar = 0;
-        for (int i = 0; i < buf.length; i++) {
-            tempScalar = buf[i] + tempScalar;
+        double scalar = 0;
+        for (int i = 0; i < maxSize(m); i++){
+            scalar = buf.getElement(i) + scalar;
         }
-        buf = new double[0];
-        return tempScalar;
+        return scalar;
     }
 
     public void showArray() {
