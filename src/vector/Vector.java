@@ -153,7 +153,7 @@ public class Vector {
     public Vector sum(Vector m) {
         Vector result = new Vector(maxSize(m));
         double[] buf = new double[maxSize(m)];
-        if (mas.length > m.size()) {
+        if (mas.length > m.size()) {// bad code. think more and you must rewrite it.
             int temp = 0;
             for (int i = 0; i < m.size(); i++) {
                 buf[i] = mas[i] + m.getElement(i);
@@ -179,7 +179,7 @@ public class Vector {
 
     public double scalar(Vector m) {
         double[] buf = new double[maxSize(m)];
-
+        // bad code. think!
         if (mas.length > m.size()) {
             int temp = 0;
 
