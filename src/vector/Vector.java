@@ -97,12 +97,10 @@ public class Vector {
     int maxSize(Vector m) {
         if (mas.length == m.size()) {
             return m.size();
+        } else if (mas.length > m.size()) {
+            return mas.length;
         } else {
-            if (mas.length > m.size()) {
-                return mas.length;
-            } else {
-                return m.size();
-            }
+            return m.size();
         }
     }
 
@@ -159,19 +157,19 @@ public class Vector {
             int temp = 0;
             for (int i = 0; i < m.size(); i++) {
                 buf[i] = mas[i] + m.getElement(i);
-                temp = i+1;
+                temp = i + 1;
             }
-            for (int i = 0; i < maxSize(m)-temp; i++) {
+            for (int i = 0; i < maxSize(m) - temp; i++) {
                 buf[i + temp] = mas[i + temp];
             }
         } else {
             int temp = 0;
             for (int i = 0; i < mas.length; i++) {
                 buf[i] = mas[i] + m.getElement(i);
-                temp = i+1;
+                temp = i + 1;
             }
-            for (int i = 0; i < maxSize(m)-temp; i++) {
-                buf[i + temp ] = m.getElement(i+temp);
+            for (int i = 0; i < maxSize(m) - temp; i++) {
+                buf[i + temp] = m.getElement(i + temp);
             }
         }
         result.addArray(buf);
@@ -179,10 +177,38 @@ public class Vector {
         return result;
     }
 
-    /*  public double scalar(Vector m){
-        int size = size(m.mas);
-        
-    }*/
+    public double scalar(Vector m) {
+        double[] buf = new double[maxSize(m)];
+
+        if (mas.length > m.size()) {
+            int temp = 0;
+
+            for (int i = 0; i < m.size(); i++) {
+                buf[i] = mas[i] * m.getElement(i);
+                temp = i + 1;
+            }
+            for (int i = 0; i < maxSize(m) - temp; i++) {
+                buf[i + temp] = mas[i + temp];
+            }
+        } else {
+            int temp = 0;
+            for (int i = 0; i < mas.length; i++) {
+                buf[i] = mas[i] * m.getElement(i);
+                temp = i + 1;
+            }
+            for (int i = 0; i < maxSize(m) - temp; i++) {
+                buf[i + temp] = m.getElement(i + temp);
+            }
+        }
+
+        double tempScalar = 0;
+        for (int i = 0; i < buf.length; i++) {
+            tempScalar = buf[i] + tempScalar;
+        }
+        buf = new double[0];
+        return tempScalar;
+    }
+
     public void showArray() {
         for (int i = 0; i < mas.length; i++) {
             System.out.print(mas[i] + " ");

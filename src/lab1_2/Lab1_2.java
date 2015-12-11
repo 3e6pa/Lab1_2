@@ -30,42 +30,43 @@ public class Lab1_2 {
         vect2.addArray(b);
         vect2.addArray(vect1);
         vect2.showArray();
-        
+
         if (vect1.compare(vect2) == 0) {
             System.out.println("vectors are equals");
-        } else if (vect1.compare(vect2) == 1){
+        } else if (vect1.compare(vect2) == 1) {
             System.out.println("vector1 a lot than vector2");
-        } else if (vect1.compare(vect2) == 2){
+        } else if (vect1.compare(vect2) == 2) {
             System.out.println("vector1 a less than vector2");
         }
         double d = vect1.getElement(1);
-        System.out.println("1 = "+d);
-        
+        System.out.println("1 = " + d);
+
         int size = vect2.size();
-        System.out.println("Size vector2 = "+size);
-        
+        System.out.println("Size vector2 = " + size);
+
         double max = vect2.max();
-        System.out.println("Max value vector2 = "+max);
-        
+        System.out.println("Max value vector2 = " + max);
+
         double min = vect2.min();
-        System.out.println("Min value vector2 = "+min);
-        
+        System.out.println("Min value vector2 = " + min);
+
         double newMax = vect2.getElement(vect2.maxPos());
-        System.out.println("Max value vector2 from pos = "+newMax);
-        
+        System.out.println("Max value vector2 from pos = " + newMax);
+
         double newMin = vect2.getElement(vect2.minPos());
-        System.out.println("Min value vector2 from pos = "+newMin);
-        
+        System.out.println("Min value vector2 from pos = " + newMin);
+
         VectorsUtil.sort(vect2);
         vect2.showArray();
-        
+
         vect1.mul(10);
         vect1.showArray();
-        
 
         Vector vectorsSum = vect1.sum(vect2);
         vectorsSum.showArray();
-       /*double scalar = vect1.scalar(vect2);*/
+        
+        double scalar = vect2.scalar(vect1);
+         System.out.println("Scalar = " + scalar);
     }
 
 }
