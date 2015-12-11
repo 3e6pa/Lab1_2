@@ -14,10 +14,10 @@ public class VectorsUtil {
     public static void sort(Vector m) {
         for (int i = 0; i < m.size(); i++) {
             for (int j = 0; j < m.size() - i - 1; j++) {
-                if (m.getElement[j] > m.mas[j + 1]) {
-                    double temp = m.mas[j];
-                    m.mas[j] = m.mas[j + 1];
-                    m.mas[j + 1] = temp;
+                if (m.getElement(j) > m.getElement(j + 1)) {
+                    double temp = m.getElement(j);
+                    m.addElement(m.getElement(j + 1),j) ;
+                    m.addElement(temp ,j + 1);
                 }
             }
         }

@@ -65,7 +65,7 @@ public class Lab1_2 {
        /* Vector vectorsSum = new Vector(10);
         vectorsSum = vect1.sum(vect2);*/
        
-       double scalar = vect1.scalar(vect2);
+       /*double scalar = vect1.scalar(vect2);*/
     }
 
 }

@@ -37,6 +37,22 @@ public class Vector {
         }
         mas[++pos] = val;
     }
+    
+    public void addElement(double val, int index) {
+        if (index > mas.length) { // look at this part of code
+            buf = new double[index + 1];
+            for (int i = 0; i < mas.length; i++) {
+                buf[i] = mas[i];
+            }
+            mas = new double[index + 2];
+            for (int i = 0; i < buf.length; i++) {
+                mas[i] = buf[i];
+            }
+        }
+        mas[index] = val;
+    }
+    
+    
 
     public void addArray(double m[]) {
         if ((mas.length - pos) <= m.length) { // and this. This are similar code. you can optimize it.
@@ -146,10 +162,10 @@ public class Vector {
    /* public Vector sum(Vector m){
     }*/
     
-    public double scalar(Vector m){
+  /*  public double scalar(Vector m){
         int size = size(m.mas);
         
-    }
+    }*/
 
     public void showArray() {
         for (int i = 0; i < mas.length; i++) {
