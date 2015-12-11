@@ -18,16 +18,16 @@ public class Lab1_2 {
      */
     public static void main(String[] args) {
         Vector vect1 = new Vector(2);
-        vect1.addElement(-10);
-        vect1.addElement(-1);
-        vect1.addElement(-100);
+        vect1.addElement(1);
+        vect1.addElement(2);
+        vect1.addElement(3);
         vect1.showArray();
 
-        double[] a = {5, 2, 3};
-        Vector vect2 = new Vector(10);
+        double[] a = {1, 2, 3};
+        double[] b = {4, 5};
+        Vector vect2 = new Vector(3);
         vect2.addArray(a);
-        vect2.addArray(a);
-        vect2.addArray(a);
+        vect2.addArray(b);
         vect2.addArray(vect1);
         vect2.showArray();
         
@@ -62,9 +62,9 @@ public class Lab1_2 {
         vect1.mul(10);
         vect1.showArray();
         
-       /* Vector vectorsSum = new Vector(10);
-        vectorsSum = vect1.sum(vect2);*/
-       
+
+        Vector vectorsSum = vect1.sum(vect2);
+        vectorsSum.showArray();
        /*double scalar = vect1.scalar(vect2);*/
     }
 

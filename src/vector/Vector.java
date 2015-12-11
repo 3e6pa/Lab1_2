@@ -31,14 +31,14 @@ public class Vector {
     }
 
     public void addElement(double val, int index) {
-        if (index > mas.length) { // look at this part of code
+        if (index > mas.length) {
             incArray(index);
         }
         mas[index] = val;
     }
 
     public void addArray(double m[]) {
-        if ((mas.length - pos) <= m.length) { // and this. This are similar code. you can optimize it.
+        if ((mas.length - pos) <= m.length) {
             incArray(mas.length + m.length);
         }
         int i;
@@ -49,7 +49,7 @@ public class Vector {
     }
 
     public void addArray(Vector m) {
-        if ((mas.length - pos) <= m.mas.length) { // third piece of similar code
+        if ((mas.length - pos) <= m.mas.length) {
             incArray(mas.length + m.size());
         }
         int i;
@@ -81,7 +81,7 @@ public class Vector {
         }
     }
 
-    public double getElement(int index) {// what will be if i ask element with larger index than array size?
+    public double getElement(int index) {
         if (index > mas.length) {
             System.out.print("Out of range");
             return mas.length;
@@ -94,7 +94,19 @@ public class Vector {
         return mas.length;
     }
 
-    public double max() { // try this code with array {-10,-1,-100}
+    int maxSize(Vector m) {
+        if (mas.length == m.size()) {
+            return m.size();
+        } else {
+            if (mas.length > m.size()) {
+                return mas.length;
+            } else {
+                return m.size();
+            }
+        }
+    }
+
+    public double max() {
         int max = 0;
         for (int i = 0; i < mas.length; i++) {
             if (mas[i] > mas[max]) {
@@ -104,7 +116,7 @@ public class Vector {
         return mas[max];
     }
 
-    public double min() { // try this code with array { 1,2,3 }
+    public double min() {
         int min = 0;
         for (int i = 0; i < mas.length; i++) {
             if (mas[i] < mas[min]) {
@@ -140,9 +152,34 @@ public class Vector {
         }
     }
 
-    /* public Vector sum(Vector m){
-    }*/
- /*  public double scalar(Vector m){
+    public Vector sum(Vector m) {
+        Vector result = new Vector(maxSize(m));
+        double[] buf = new double[maxSize(m)];
+        if (mas.length > m.size()) {
+            int temp = 0;
+            for (int i = 0; i < m.size(); i++) {
+                buf[i] = mas[i] + m.getElement(i);
+                temp = i+1;
+            }
+            for (int i = 0; i < maxSize(m)-temp; i++) {
+                buf[i + temp] = mas[i + temp];
+            }
+        } else {
+            int temp = 0;
+            for (int i = 0; i < mas.length; i++) {
+                buf[i] = mas[i] + m.getElement(i);
+                temp = i+1;
+            }
+            for (int i = 0; i < maxSize(m)-temp; i++) {
+                buf[i + temp ] = m.getElement(i+temp);
+            }
+        }
+        result.addArray(buf);
+        buf = new double[0];
+        return result;
+    }
+
+    /*  public double scalar(Vector m){
         int size = size(m.mas);
         
     }*/
