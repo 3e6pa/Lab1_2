@@ -5,6 +5,9 @@
  */
 package vector;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author User
@@ -157,7 +160,7 @@ public class Vector {
         }
     }
 
-    public Vector sum(Vector m) {
+    public Vector sum(Vector m) throws Throwable {
         Vector result = new Vector(maxSize(m));
         Vector buf1 = new Vector(maxSize(m));
         Vector buf2 = new Vector(maxSize(m));
@@ -166,12 +169,13 @@ public class Vector {
         for (int i = 0; i < maxSize(m); i++) {
             result.addElement((buf1.getElement(i) + buf2.getElement(i)), i);
         }
-        buf1 = new Vector(0);
-        buf2 = new Vector(0);
+        buf1.finalize();
+        buf2.finalize();
         return result;
+
     }
 
-    public double scalar(Vector m) {
+    public double scalar(Vector m) throws Throwable {
         Vector buf = new Vector(maxSize(m));
         for (int i = 0; i < minSize(m); i++) {
             buf.addElement(mas[i] * m.getElement(i), i);
@@ -189,6 +193,7 @@ public class Vector {
         for (int i = 0; i < maxSize(m); i++) {
             scalar = buf.getElement(i) + scalar;
         }
+        buf.finalize();
         return scalar;
     }
 
