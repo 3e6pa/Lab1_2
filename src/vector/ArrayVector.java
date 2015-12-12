@@ -9,7 +9,8 @@ package vector;
  *
  * @author User
  */
-    class ArrayVector {
+public class ArrayVector {
+
     private double[] mas;
     private int pos;
 
@@ -17,21 +18,57 @@ package vector;
         mas = new double[size];
         pos = -1;
     }
-    
+
     public void addElement(double val) { //add element array
         if (pos + 1 == mas.length) {
             incArray(pos + 2);
         }
         mas[++pos] = val;
     }
-    
+
+    public void del(int index) {
+        if (index <= mas.length) {
+            mas[index] = 0;
+        } else {
+            System.out.println("Range of out array" + mas.length);
+        }
+
+    }
+
+    public void del(ArrayVector m, int begin, int end) {
+        if ((m.size() <= begin) && (end >= 0) && (end > begin)) {
+            for (int i = begin; i < end - end; i++) {
+                m.del(i);
+            }
+            if ((begin + 1) >= m.size()) {
+                bias(m, begin, end);
+            }
+        } else {
+            System.out.println("Range of out array" + m.size() + " or not correct begin and end");
+        }
+    }
+
+    protected void bias(ArrayVector m, int a, int b) {
+        int count = b - a;
+        ArrayVector buf = new ArrayVector(m.size() - count);
+        for (int i = b + 1; i < m.size(); i++) {
+            m.addElement(m.getElement(i), i-count-1);
+        }
+        for (int i = 0; i<buf.size(); i++){
+            buf.addElement(m.getElement(i), i);
+        }
+        m = new ArrayVector (buf.size());
+        m.addArray(buf);
+        buf = null;
+    }
+
     public void addElement(double val, int index) { // add element array in index
         if (index > mas.length) {
             incArray(index);
         }
         mas[index] = val;
     }
-    
+
     public int maxSize(ArrayVector m) {
         if (compare(m) == 0) {
             return m.size();
@@ -39,7 +76,7 @@ package vector;
             return mas.length;
         }
     }
-    
+
     public int compare(ArrayVector m) { // method for compare vectors
         if (mas.length <= m.size()) {
             return 0;
@@ -47,7 +84,7 @@ package vector;
             return 1;
         }
     }
-    
+
     public int size() { // for length array
         return mas.length;
     }
@@ -60,7 +97,6 @@ package vector;
         }
     }
 
-    
     public double getElement(int index) {
         if (index > mas.length) {
             System.out.print("Out of range, last element");
@@ -72,8 +108,8 @@ package vector;
             return mas[index];
         }
     }
-    
-     private void incArray(int size) { // method for increase array
+
+    private void incArray(int size) { // method for increase array
         double[] buf = new double[mas.length];
         for (int i = 0; i < mas.length; i++) {
             buf[i] = mas[i];
@@ -84,8 +120,8 @@ package vector;
         }
         buf = new double[0];
     }
-    
-     public void addArray(double m[]) {
+
+    public void addArray(double m[]) {
         if ((mas.length - pos) <= m.length) {
             incArray(mas.length + m.length);
         }
@@ -106,7 +142,8 @@ package vector;
         }
         pos = pos + i;
     }
-     public void showArray() {
+
+    public void showArray() {
         for (int i = 0; i < mas.length; i++) {
             System.out.print(mas[i] + " ");
         }
@@ -115,5 +152,5 @@ package vector;
        *     System.out.print(buf[i] + " ");
         }*/
     }
-  
+
 }
