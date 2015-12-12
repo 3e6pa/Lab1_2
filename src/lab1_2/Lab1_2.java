@@ -44,8 +44,8 @@ public class Lab1_2 {
             default:
                 break;
         }
-        double d = vect1.getElement(1);
-        System.out.println("1 = " + d);
+        double d = vect1.getElement(-5);
+        System.out.println(d);
 
         int size = vect2.size();
         System.out.println("Size vector2 = " + size);
@@ -71,7 +71,7 @@ public class Lab1_2 {
         Vector vectorsSum = vect1.sum(vect2);
         vectorsSum.showArray();
         
-        double scalar = vect2.scalar(vect1);
+        double scalar = vect1.scalar(vect2);
          System.out.println("Scalar = " + scalar);
     }
 

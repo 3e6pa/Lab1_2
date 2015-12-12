@@ -59,7 +59,7 @@ public class Vector {
         pos = pos + i;
     }
 
-    void incArray(int size) {
+    private void incArray(int size) {
         double[] buf = new double[mas.length];
         for (int i = 0; i < mas.length; i++) {
             buf[i] = mas[i];
@@ -72,19 +72,20 @@ public class Vector {
     }
 
     public int compare(Vector m) {
-        if (mas.length == m.mas.length) {
+        if (mas.length <= m.mas.length) {
             return 0;
-        } else if (mas.length > m.mas.length) {
-            return 1;
         } else {
-            return 2;
+            return 1;
         }
     }
 
     public double getElement(int index) {
         if (index > mas.length) {
-            System.out.print("Out of range");
-            return mas.length;
+            System.out.print("Out of range, last element");
+            return mas[mas.length - 1];
+        } else if (index < 0) {
+            System.out.print("Out of range, first element");
+            return mas[0];
         } else {
             return mas[index];
         }
@@ -94,20 +95,16 @@ public class Vector {
         return mas.length;
     }
 
-    int maxSize(Vector m) {
-        if (mas.length == m.size()) {
+    private int maxSize(Vector m) {
+        if (compare(m) == 0) {
             return m.size();
-        } else if (mas.length > m.size()) {
-            return mas.length;
         } else {
-            return m.size();
+            return mas.length;
         }
     }
 
-    int minSize(Vector m) {
-        if (mas.length == m.size()) {
-            return m.size();
-        } else if (mas.length < m.size()) {
+    private int minSize(Vector m) {
+        if (compare(m) == 0) {
             return mas.length;
         } else {
             return m.size();
@@ -181,15 +178,15 @@ public class Vector {
         }
         if (maxSize(m) == mas.length) {
             for (int i = 0; i < maxSize(m) - minSize(m); i++) {
-                buf.addElement(mas[i+minSize(m)], i+minSize(m));
+                buf.addElement(mas[i + minSize(m)], i + minSize(m));
             }
         } else {
-             for (int i = 0; i < maxSize(m) - minSize(m); i++) {
-                buf.addElement(m.getElement(i+minSize(m)), i+minSize(m));
+            for (int i = 0; i < maxSize(m) - minSize(m); i++) {
+                buf.addElement(m.getElement(i + minSize(m)), i + minSize(m));
             }
         }
         double scalar = 0;
-        for (int i = 0; i < maxSize(m); i++){
+        for (int i = 0; i < maxSize(m); i++) {
             scalar = buf.getElement(i) + scalar;
         }
         return scalar;
