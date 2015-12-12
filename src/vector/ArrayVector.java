@@ -40,7 +40,7 @@ public class ArrayVector {
             for (int i = begin; i < end - end; i++) {
                 m.del(i);
             }
-            if ((begin + 1) >= m.size()) {
+            if ((end + 1) >= m.size()) {
                 bias(m, begin, end);
             }
         } else {
@@ -53,6 +53,7 @@ public class ArrayVector {
         ArrayVector buf = new ArrayVector(m.size() - count);
         for (int i = b + 1; i < m.size(); i++) {
             m.addElement(m.getElement(i), i-count-1);
+            pos--;
         }
         for (int i = 0; i<buf.size(); i++){
             buf.addElement(m.getElement(i), i);
