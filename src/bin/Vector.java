@@ -162,8 +162,8 @@ package bin;
         for (int i = 0; i < maxSize(m); i++) {
             result.addElement((buf1.getElement(i) + buf2.getElement(i)), i);
         }
-        buf1.finalize();
-        buf2.finalize();
+        buf1 = null;
+        buf2 = null;
         return result;
 
     }

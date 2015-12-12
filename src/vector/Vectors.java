@@ -11,11 +11,21 @@ package vector;
  */
 class Vectors {
 
-    public static ArrayVector sumVetors (ArrayVector m, ArrayVector n){
-        ArrayVector vect = new ArrayVector(m.maxSize(n));  
-        // TODO:  realize this method 
-    } 
-    
+    public static ArrayVector sumVetors(ArrayVector m, ArrayVector n) {
+        ArrayVector vect = new ArrayVector(m.maxSize(n));
+        ArrayVector buf1 = new ArrayVector(m.maxSize(m));
+        ArrayVector buf2 = new ArrayVector(m.maxSize(m));
+        buf1.addArray(n);
+        buf2.addArray(m);
+        for (int i = 0; i < n.maxSize(m); i++) {
+            vect.addElement((buf1.getElement(i) + buf2.getElement(i)), i);
+        }
+        buf1 = null;
+        buf2 = null;
+        return vect;
+
+    }
+
     public static double scalar(ArrayVector m, ArrayVector n) {
         ArrayVector buf = new ArrayVector(n.maxSize(m));
         for (int i = 0; i < n.minSize(m); i++) {
@@ -38,4 +48,18 @@ class Vectors {
         return scalar;
     }
     
+    public static void mul(ArrayVector m, double val){
+         for (int i = 0; i < m.size(); i++) {
+            m.addElement((m.getElement(i))*val, i);
+        }
+    }
+    
+     public static int compare(ArrayVector m, ArrayVector n) { // method for compare vectors
+        if (m.size() < n.size()) {
+            return 1;
+        } else  if (m.size() > n.size()){
+            return 2;
+        } else return 0;
+    }
+
 }

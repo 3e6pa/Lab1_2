@@ -16,8 +16,8 @@ public class Lab1_2 {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws Throwable {
-        Vector vect1 = new Vector(2);
+    public static void main(String[] args) {
+        ArrayVector vect1 = new ArrayVector(2);
         vect1.addElement(1);
         vect1.addElement(2);
         vect1.addElement(3);
@@ -25,7 +25,7 @@ public class Lab1_2 {
 
         double[] a = {1, 2, 3};
         double[] b = {4, 5};
-        Vector vect2 = new Vector(3);
+        ArrayVector vect2 = new ArrayVector(3);
         vect2.addArray(a);
         vect2.addArray(b);
         vect2.addArray(vect1);

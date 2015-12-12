@@ -106,6 +106,14 @@ package vector;
         }
         pos = pos + i;
     }
-    
+     public void showArray() {
+        for (int i = 0; i < mas.length; i++) {
+            System.out.print(mas[i] + " ");
+        }
+        System.out.println();
+        /*   for (int i = 0; i < buf.length; i++) {
+       *     System.out.print(buf[i] + " ");
+        }*/
+    }
   
 }

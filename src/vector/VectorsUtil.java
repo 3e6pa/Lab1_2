@@ -5,14 +5,13 @@
  */
 package vector;
 
-
 /**
  *
  * @author User
  */
 public class VectorsUtil {
 
-    public static void sort(Vector m) {
+    public static void sort(ArrayVector m) {
         for (int i = 0; i < m.size(); i++) {
             for (int j = 0; j < m.size() - i - 1; j++) {
                 if (m.getElement(j) > m.getElement(j + 1)) {
