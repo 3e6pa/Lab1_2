@@ -26,40 +26,37 @@ public class ArrayVector {
         mas[++pos] = val;
     }
 
-    public void del(int index) {
-        if (index <= mas.length) {
-            mas[index] = 0;
+    public void del( int index) {
+        if ((index >= 0) && (index <= mas.length)) {
+            bias(index, index);
         } else {
             System.out.println("Range of out array" + mas.length);
         }
-
     }
 
-    public void del(ArrayVector m, int begin, int end) {
-        if ((m.size() <= begin) && (end >= 0) && (end > begin)) {
-            for (int i = begin; i < end - end; i++) {
-                m.del(i);
-            }
-            if ((end + 1) >= m.size()) {
-                bias(m, begin, end);
-            }
+    public void del(int begin, int end) {
+        if ((begin >= 0) && (end <= mas.length) && (end >= begin)) {
+            bias(begin, end);
         } else {
-            System.out.println("Range of out array" + m.size() + " or not correct begin and end");
+            System.out.println("Range of out array" + mas.length + " or not correct begin and end");
         }
     }
 
-    protected void bias(ArrayVector m, int a, int b) {
-        int count = b - a;
-        ArrayVector buf = new ArrayVector(m.size() - count);
-        for (int i = b + 1; i < m.size(); i++) {
-            m.addElement(m.getElement(i), i-count-1);
-            pos--;
+    protected void bias(int a, int b) {
+        if (b != mas.length) {
+            for (int i = b ; i < mas.length; i++) {
+                mas[i-(b-a)] = mas[i];
+            }
         }
-        for (int i = 0; i<buf.size(); i++){
-            buf.addElement(m.getElement(i), i);
+        pos = 0;
+        double[] buf = new double[mas.length - (b-a)];
+        for (int i = 0; i < buf.length; i++) {
+            buf[i] = mas[i];;
         }
-        m = new ArrayVector (buf.size());
-        m.addArray(buf);
+        mas = new double[buf.length];
+        for (int i = 0; i < buf.length; i++) {
+            mas[i] = buf[i];;
+        }
         buf = null;
     }
 
