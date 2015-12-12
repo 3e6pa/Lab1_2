@@ -3,44 +3,37 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package vector;
-
-import java.util.logging.Level;
-import java.util.logging.Logger;
+package bin;
 
 /**
  *
  * @author User
  */
-public class Vector {
+ class Vector {
 
-    /**
-     * class fields must be private!
-     *
-     */
     private double[] mas;
     private int pos;
 
-    public Vector(int size) {
+    public Vector(int size) { //Constructor
         mas = new double[size];
         pos = -1;
     }
 
-    public void addElement(double val) {
+    public void addElement(double val) { //add element array
         if (pos + 1 == mas.length) {
             incArray(pos + 2);
         }
         mas[++pos] = val;
     }
 
-    public void addElement(double val, int index) {
+    public void addElement(double val, int index) { // add element array in index
         if (index > mas.length) {
             incArray(index);
         }
         mas[index] = val;
     }
 
-    public void addArray(double m[]) {
+    public void addArray(double m[]) { // add in array from other array
         if ((mas.length - pos) <= m.length) {
             incArray(mas.length + m.length);
         }
@@ -51,7 +44,7 @@ public class Vector {
         pos = pos + i;
     }
 
-    public void addArray(Vector m) {
+    public void addArray(Vector m) { //add in array from other method
         if ((mas.length - pos) <= m.mas.length) {
             incArray(mas.length + m.size());
         }
@@ -62,7 +55,7 @@ public class Vector {
         pos = pos + i;
     }
 
-    private void incArray(int size) {
+    private void incArray(int size) { // method for increase array
         double[] buf = new double[mas.length];
         for (int i = 0; i < mas.length; i++) {
             buf[i] = mas[i];
@@ -74,7 +67,7 @@ public class Vector {
         buf = new double[0];
     }
 
-    public int compare(Vector m) {
+    public int compare(Vector m) { // method for compare vectors
         if (mas.length <= m.mas.length) {
             return 0;
         } else {
@@ -82,7 +75,7 @@ public class Vector {
         }
     }
 
-    public double getElement(int index) {
+    public double getElement(int index) { // method for access to element
         if (index > mas.length) {
             System.out.print("Out of range, last element");
             return mas[mas.length - 1];
@@ -94,11 +87,11 @@ public class Vector {
         }
     }
 
-    public int size() {
+    public int size() { // for length array
         return mas.length;
     }
 
-    private int maxSize(Vector m) {
+    public int maxSize(Vector m) {
         if (compare(m) == 0) {
             return m.size();
         } else {
@@ -106,7 +99,7 @@ public class Vector {
         }
     }
 
-    private int minSize(Vector m) {
+    public int minSize(Vector m) {
         if (compare(m) == 0) {
             return mas.length;
         } else {

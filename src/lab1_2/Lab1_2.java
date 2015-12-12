@@ -16,7 +16,7 @@ public class Lab1_2 {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Throwable {
         Vector vect1 = new Vector(2);
         vect1.addElement(1);
         vect1.addElement(2);
