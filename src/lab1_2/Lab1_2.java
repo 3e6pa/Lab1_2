@@ -20,7 +20,7 @@ public class Lab1_2 {
         ArrayVector vect1 = new ArrayVector(10);
         double[] a = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
         vect1.addArray(a);
-        vect1.del(10);
+        vect1.del(0,9);
         vect1.showArray();
         
 

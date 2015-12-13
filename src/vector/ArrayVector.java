@@ -27,7 +27,7 @@ public class ArrayVector {
     }
 
     public void del( int index) {
-        if ((index >= 0) && (index <= mas.length)) {
+        if ((index >= 0) && (index <= mas.length-1)) {
             bias(index, index);
         } else {
             System.out.println("Range of out array" + mas.length);
@@ -35,7 +35,7 @@ public class ArrayVector {
     }
 
     public void del(int begin, int end) {
-        if ((begin >= 0) && (end <= mas.length) && (end >= begin)) {
+        if ((begin >= 0) && (end <= mas.length-1) && (end >= begin)) {
             bias(begin, end);
         } else {
             System.out.println("Range of out array" + mas.length + " or not correct begin and end");
@@ -43,21 +43,15 @@ public class ArrayVector {
     }
 
     protected void bias(int a, int b) {
-        int count = 1;
-        if (b != mas.length) {
+        if (b != mas.length-1) {
             for (int i = b+1 ; i < mas.length; i++) {
                 mas[i-(b-a)-1] = mas[i];
-                count++;
             }
         }
-        pos = 0;
-        double[] buf = new double[mas.length - (b-a)-1];
-        for (int i = 0; i < buf.length; i++) {
-            buf[i] = mas[i];;
-        }
-        mas = new double[buf.length];
-        for (int i = 0; i < buf.length; i++) {
-            mas[i] = buf[i];;
+        double[] buf = mas;
+        mas = new double [mas.length - (b-a)-1];
+        for (int i = 0; i < mas.length ; i++) {
+            mas[i] = buf[i];
         }
     }
 
