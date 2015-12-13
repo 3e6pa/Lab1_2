@@ -53,6 +53,7 @@ public class ArrayVector {
         for (int i = 0; i < mas.length ; i++) {
             mas[i] = buf[i];
         }
+        pos = mas.length-1;
     }
 
     public void addElement(double val, int index) { // add element array in index

@@ -9,7 +9,7 @@ package vector;
  *
  * @author User
  */
-class Vectors {
+public class Vectors {
 
     public static ArrayVector sumVetors(ArrayVector m, ArrayVector n) {
         ArrayVector vect = new ArrayVector(m.maxSize(n));
