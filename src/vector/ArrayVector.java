@@ -43,13 +43,15 @@ public class ArrayVector {
     }
 
     protected void bias(int a, int b) {
+        int count = 1;
         if (b != mas.length) {
-            for (int i = b ; i < mas.length; i++) {
-                mas[i-(b-a)] = mas[i];
+            for (int i = b+1 ; i < mas.length; i++) {
+                mas[i-(b-a)-1] = mas[i];
+                count++;
             }
         }
         pos = 0;
-        double[] buf = new double[mas.length - (b-a)];
+        double[] buf = new double[mas.length - (b-a)-1];
         for (int i = 0; i < buf.length; i++) {
             buf[i] = mas[i];;
         }
@@ -57,7 +59,6 @@ public class ArrayVector {
         for (int i = 0; i < buf.length; i++) {
             mas[i] = buf[i];;
         }
-        buf = null;
     }
 
     public void addElement(double val, int index) { // add element array in index
