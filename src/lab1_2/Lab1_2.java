@@ -49,6 +49,24 @@ public class Lab1_2 {
         double val = vectList.getValue(9);
         System.out.println("Element 4 = " + val);
         System.out.println("size vectList = " + vectList.size());
+        vectList.removeLast();
+        vectList.showList();
+        System.out.println("size vectList = " + vectList.size());
+        vectList.removeLast();
+        vectList.showList();
+        System.out.println("size vectList = " + vectList.size());
+        vectList.addLast(229);
+        System.out.println("size vectList = " + vectList.size());
+        vectList.showList();
+        vectList.remove(1);
+        System.out.println("size vectList ago remove= " + vectList.size());
+        vectList.addLast(8);
+        System.out.println("size vectList = " + vectList.size());
+        vectList.addLast(9);
+        vectList.addLast(9);
+         vectList.showList();
+        vectList.removeFirst();
+        vectList.showList();
     }
 
 }
