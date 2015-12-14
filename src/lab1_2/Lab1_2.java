@@ -34,6 +34,14 @@ public class Lab1_2 {
         vect2.addArray(b);
         double scalar = Vectors.scalar(vect2, vect1);
         System.out.println("Scalar = "+scalar);
+        
+        LinkedListVector vectList = new LinkedListVector();
+        vectList.add(5);
+        vectList.add(6);
+        vectList.add(7);
+        vectList.add(8);
+        vectList.add(9);
+        vectList.showList();
     }
 
 }
