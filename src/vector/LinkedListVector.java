@@ -86,7 +86,7 @@ public class LinkedListVector {
     }
 
     public void add(double value, int index) {
-        if ((index > 0) && (index < length)) {
+        if ((index < 1) && (index > length)) {
             System.out.println("Out fo range");
         } else {
             Link temp = head;
@@ -106,6 +106,26 @@ public class LinkedListVector {
             System.out.print(temp.value + " ");
             temp = temp.next;
         }
+        System.out.println();
+    }
+
+    public double getValue(int index) {
+        if ((index < 0) || (index > length)) {
+            System.out.println("Out fo range");
+            return 0;
+        } else {
+        double value = 0;
+        Link temp = head;
+        for (int i = 0; i < index - 1; i++) {
+            temp = temp.next;
+        }
+        value = temp.value;
+        return value;
+        }
+    }
+    
+    public int size(){
+        return length;
     }
 
 }
