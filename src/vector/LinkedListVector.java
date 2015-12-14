@@ -32,27 +32,6 @@ public class LinkedListVector {
         }
 
         Link() {
-
-        }
-
-        public Link getNext() {
-            return next;
-        }
-
-        public void setNext(Link next) {
-            this.next = next;
-        }
-
-        public Link getPrev() {
-            return prev;
-        }
-
-        public void setPrev(Link prev) {
-            this.prev = prev;
-        }
-
-        public double getValue() {
-            return value;
         }
 
         public void setValue(double value) {
@@ -114,17 +93,17 @@ public class LinkedListVector {
             System.out.println("Out fo range");
             return 0;
         } else {
-        double value = 0;
-        Link temp = head;
-        for (int i = 0; i < index - 1; i++) {
-            temp = temp.next;
-        }
-        value = temp.value;
-        return value;
+            double value = 0;
+            Link temp = head;
+            for (int i = 0; i < index - 1; i++) {
+                temp = temp.next;
+            }
+            value = temp.value;
+            return value;
         }
     }
-    
-    public int size(){
+
+    public int size() {
         return length;
     }
 
