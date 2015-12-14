@@ -10,6 +10,7 @@ package vector;
  * @author viks
  */
 public class LinkedListVector {
+
     Link head;
     int length;
 
@@ -59,26 +60,50 @@ public class LinkedListVector {
         }
     }
 
-    public void add(double value) {
+    public void addFirst(double value) {
+        Link temp = head;
+        Link e = new Link(temp, temp.prev, value); //next, prev
+        head = e;
+        e.next.prev = e;
+        e.prev.next = e;
+        length++;
+    }
+
+    public void addLast(double value) {
         Link e = new Link();
         e.setValue(value);
-        if (head ==  null){
+        if (head == null) {
             head = e;
             head.next = head.prev = e;
             length++;
         } else {
-        head.prev.next = e;
-        e.prev = head.prev;
-        e.next = head;
-        e.next.prev = e;
-        length++;
+            head.prev.next = e;
+            e.prev = head.prev;
+            e.next = head;
+            e.next.prev = e;
+            length++;
+        }
+    }
+
+    public void add(double value, int index) {
+        if ((index > 0) && (index < length)) {
+            System.out.println("Out fo range");
+        } else {
+            Link temp = head;
+            for (int i = 0; i < index - 2; i++) {
+                temp = temp.next;
+            }
+            Link e = new Link(temp.next, temp, value); // next, prew
+            e.prev.next = e;
+            e.next.prev = e;
+            length++;
         }
     }
 
     public void showList() {
         Link temp = head;
         for (int i = 0; i < length; i++) {
-            System.out.print(temp.value+" ");
+            System.out.print(temp.value + " ");
             temp = temp.next;
         }
     }

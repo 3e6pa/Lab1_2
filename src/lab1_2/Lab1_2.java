@@ -36,11 +36,15 @@ public class Lab1_2 {
         System.out.println("Scalar = "+scalar);
         
         LinkedListVector vectList = new LinkedListVector();
-        vectList.add(5);
-        vectList.add(6);
-        vectList.add(7);
-        vectList.add(8);
-        vectList.add(9);
+        vectList.addLast(5);
+        vectList.addLast(6);
+        vectList.addLast(7);
+        vectList.addLast(8);
+        vectList.addLast(9);
+        vectList.add(25, 3);
+        vectList.addFirst(101);
+        vectList.addLast(36);
+        vectList.add(45, 4);
         vectList.showList();
     }
 
