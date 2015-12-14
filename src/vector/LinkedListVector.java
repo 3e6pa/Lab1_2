@@ -102,30 +102,30 @@ public class LinkedListVector {
             return value;
         }
     }
-    
-    public void removeLast(){
-        Link temp = head.prev.prev;        
+
+    public void removeLast() {
+        Link temp = head.prev.prev;
         head.prev = temp;
         head.prev.next = head;
         length--;
     }
-    
-    public void remove(int index){
+
+    public void remove(int index) {
         if ((index < 2) || (index > length)) {
             System.out.println("Out fo range, use E.removeFirst() or E.removeLast()");
         } else {
-        Link temp = head;
-        for (int i = 0; i < index - 1; i++) {
+            Link temp = head;
+            for (int i = 0; i < index - 1; i++) {
                 temp = temp.next;
             }
-        temp.prev.next = temp.next;
-        temp.next.prev = temp.prev;
-        length--;
+            temp.prev.next = temp.next;
+            temp.next.prev = temp.prev;
+            length--;
         }
     }
-    
-    public void removeFirst(){
-        Link temp = head.next;        
+
+    public void removeFirst() {
+        Link temp = head.next;
         head.prev.next = temp;
         head = temp;
         length--;
