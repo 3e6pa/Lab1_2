@@ -9,7 +9,7 @@ package vector;
  *
  * @author viks
  */
-public class LinkedListVector {
+public class LinkedListVector implements Vector{
 
     Link head;
     int length;
@@ -48,6 +48,7 @@ public class LinkedListVector {
         length++;
     }
 
+    @Override
     public void addLast(double value) {
         Link e = new Link();
         e.setValue(value);
@@ -64,6 +65,7 @@ public class LinkedListVector {
         }
     }
 
+    @Override
     public void add(double value, int index) {
         if ((index < 1) || (index > length)) {
             System.out.println("Out fo range");
@@ -79,7 +81,8 @@ public class LinkedListVector {
         }
     }
 
-    public void showList() {
+    @Override
+    public void show() {
         Link temp = head;
         for (int i = 0; i < length; i++) {
             System.out.print(temp.value + " ");
@@ -88,6 +91,7 @@ public class LinkedListVector {
         System.out.println();
     }
 
+    @Override
     public double getValue(int index) {
         if ((index < 0) || (index > length)) {
             System.out.println("Out fo range");
@@ -110,6 +114,7 @@ public class LinkedListVector {
         length--;
     }
 
+    @Override
     public void remove(int index) {
         if ((index < 2) || (index > length)) {
             System.out.println("Out fo range, use E.removeFirst() or E.removeLast()");
@@ -131,6 +136,7 @@ public class LinkedListVector {
         length--;
     }
 
+    @Override
     public int size() {
         return length;
     }

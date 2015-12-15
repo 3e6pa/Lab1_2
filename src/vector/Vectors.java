@@ -18,7 +18,7 @@ public class Vectors {
         buf1.addArray(n);
         buf2.addArray(m);
         for (int i = 0; i < n.maxSize(m); i++) {
-            vect.addElement((buf1.getElement(i) + buf2.getElement(i)), i);
+            vect.add((buf1.getValue(i) + buf2.getValue(i)), i);
         }
         buf1 = null;
         buf2 = null;
@@ -29,20 +29,20 @@ public class Vectors {
     public static double scalar(ArrayVector m, ArrayVector n) {
         ArrayVector buf = new ArrayVector(n.maxSize(m));
         for (int i = 0; i < n.minSize(m); i++) {
-            buf.addElement(n.getElement(i) * m.getElement(i), i);
+            buf.add(n.getValue(i) * m.getValue(i), i);
         }
         if (n.maxSize(m) == n.size()) {
             for (int i = 0; i < n.maxSize(m) - n.minSize(m); i++) {
-                buf.addElement(n.getElement(i + n.minSize(m)), i + n.minSize(m));
+                buf.add(n.getValue(i + n.minSize(m)), i + n.minSize(m));
             }
         } else {
             for (int i = 0; i < n.maxSize(m) - n.minSize(m); i++) {
-                buf.addElement(m.getElement(i + n.minSize(m)), i + n.minSize(m));
+                buf.add(m.getValue(i + n.minSize(m)), i + n.minSize(m));
             }
         }
         double scalar = 0;
         for (int i = 0; i < n.maxSize(m); i++) {
-            scalar = buf.getElement(i) + scalar;
+            scalar = buf.getValue(i) + scalar;
         }
         buf = null;
         return scalar;
@@ -50,7 +50,7 @@ public class Vectors {
     
     public static void mul(ArrayVector m, double val){
          for (int i = 0; i < m.size(); i++) {
-            m.addElement((m.getElement(i))*val, i);
+            m.add((m.getValue(i))*val, i);
         }
     }
     

@@ -9,7 +9,7 @@ package vector;
  *
  * @author User
  */
-public class ArrayVector {
+public class ArrayVector implements Vector{
 
     private double[] mas;
     private int pos;
@@ -19,14 +19,16 @@ public class ArrayVector {
         pos = -1;
     }
 
-    public void addElement(double val) { //add element array
+    @Override
+    public void addLast(double value) { //add element array
         if (pos + 1 == mas.length) {
             incArray(pos + 2);
         }
-        mas[++pos] = val;
+        mas[++pos] = value;
     }
 
-    public void del( int index) {
+    @Override
+    public void remove( int index) {
         if ((index >= 0) && (index <= mas.length-1)) {
             bias(index, index);
         } else {
@@ -56,7 +58,8 @@ public class ArrayVector {
         pos = mas.length-1;
     }
 
-    public void addElement(double val, int index) { // add element array in index
+    @Override
+    public void add(double val, int index) { // add element array in index
         if (index > mas.length) {
             incArray(index);
         }
@@ -79,6 +82,7 @@ public class ArrayVector {
         }
     }
 
+    @Override
     public int size() { // for length array
         return mas.length;
     }
@@ -91,7 +95,8 @@ public class ArrayVector {
         }
     }
 
-    public double getElement(int index) {
+    @Override
+    public double getValue(int index) {
         if (index > mas.length) {
             System.out.print("Out of range, last element");
             return mas[mas.length - 1];
@@ -132,12 +137,13 @@ public class ArrayVector {
         }
         int i;
         for (i = 0; i < m.size(); i++) {
-            mas[i + (pos + 1)] = m.getElement(i);
+            mas[i + (pos + 1)] = m.getValue(i);
         }
         pos = pos + i;
     }
 
-    public void showArray() {
+    @Override
+    public void show() {
         for (int i = 0; i < mas.length; i++) {
             System.out.print(mas[i] + " ");
         }
