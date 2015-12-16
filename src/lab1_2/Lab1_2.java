@@ -26,7 +26,7 @@ public class Lab1_2 {
         vectList.addArray(a);
         vectList.show();
 
-        //double scalar = Vectors.scalar(vectList, vect1);
-       // System.out.println("Scalar = " + scalar);
+        double scalar = Vectors.scalar(vectList, vect1);
+        System.out.println("Scalar = " + scalar);
     }
 }

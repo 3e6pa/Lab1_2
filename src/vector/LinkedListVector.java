@@ -50,6 +50,18 @@ public class LinkedListVector implements Vector {
             addLast(m[i]);
         }
     }
+    
+    @Override
+    public void addArray(Vector m) {
+        int z = 0;
+        if (head == null) {
+            addLast(m.getValue(z));
+            z++;
+        }
+        for (int i = z; i < m.size(); i++) {
+            addLast(m.getValue(z));
+        }
+    }
 
     public void addFirst(double value) {
         Link temp = head;
@@ -151,6 +163,33 @@ public class LinkedListVector implements Vector {
     @Override
     public int size() {
         return length;
+    }
+    
+    @Override
+    public int maxSize(Vector m, Vector n){
+        if (compare(m, n) == 0) {
+            return m.size();
+        } else {
+            return n.size();
+        }
+    }
+    
+    @Override
+    public int minSize(Vector m, Vector n) {
+        if (compare(m, n) == 0) {
+            return n.size();
+        } else {
+            return m.size();
+        }
+    }
+    
+    @Override
+    public int compare(Vector m, Vector n) { // method for compare vectors
+        if (n.size() <= m.size()) {
+            return 0;
+        } else {
+            return 1;
+        }
     }
 
 }

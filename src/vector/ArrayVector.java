@@ -66,16 +66,20 @@ public class ArrayVector implements Vector{
         mas[index] = val;
     }
 
-    public int maxSize(ArrayVector m) {
-        if (compare(m) == 0) {
+    @Override
+    public int maxSize(Vector m, Vector n ) {
+        if (compare(m, n) == 0) {
             return m.size();
         } else {
-            return mas.length;
+            return n.size();
         }
     }
+    
+    
 
-    public int compare(ArrayVector m) { // method for compare vectors
-        if (mas.length <= m.size()) {
+    @Override
+    public int compare(Vector m, Vector n) { // method for compare vectors
+        if (n.size() <= m.size()) {
             return 0;
         } else {
             return 1;
@@ -87,14 +91,16 @@ public class ArrayVector implements Vector{
         return mas.length;
     }
 
-    public int minSize(ArrayVector m) {
-        if (compare(m) == 0) {
-            return mas.length;
+    @Override
+    public int minSize(Vector m, Vector n) {
+        if (compare(m, n) == 0) {
+            return n.size();
         } else {
             return m.size();
         }
     }
 
+    @Override
     public double getValue(int index) {
         if (index > mas.length) {
             System.out.print("Out of range, last element");
@@ -119,6 +125,7 @@ public class ArrayVector implements Vector{
         buf = new double[0];
     }
 
+    @Override
     public void addArray(double m[]) {
         if ((mas.length - pos) <= m.length) {
             incArray(mas.length + m.length);
@@ -130,7 +137,7 @@ public class ArrayVector implements Vector{
         pos = pos + i;
     }
 
-    public void addArray(ArrayVector m) {
+    public void addArray(Vector m) {
         if ((mas.length - pos) <= m.size()) {
             incArray(mas.length + m.size());
         }
@@ -152,4 +159,5 @@ public class ArrayVector implements Vector{
         }*/
     }
 
+    
 }
