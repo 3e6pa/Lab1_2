@@ -235,7 +235,14 @@ public class LinkedListVector implements Vector {
         temp2 = null;
         return true;
     }
-    
-    
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        LinkedListVector clon = (LinkedListVector) super.clone();
+        /*for (int i = 0; i < this.size(); i++) {
+            clon.addLast(this.getValue(i));
+        }*/
+        return clon;
+    }
 
 }

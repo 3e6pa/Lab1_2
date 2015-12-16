@@ -21,6 +21,10 @@ public class ArrayVector implements Vector {
         pos = -1;
     }
 
+    public ArrayVector() {
+    }
+    
+
     @Override
     public void addLast(double value) { //add element array
         if (pos + 1 == mas.length) {
@@ -137,6 +141,7 @@ public class ArrayVector implements Vector {
         pos = pos + i;
     }
 
+    @Override
     public void addArray(Vector m) {
         if ((mas.length - pos) <= m.size()) {
             incArray(mas.length + m.size());
@@ -195,6 +200,13 @@ public class ArrayVector implements Vector {
         return true;
     }
     
-    
+    @Override
+    public Object clone() throws CloneNotSupportedException  {
+            ArrayVector clon   = (ArrayVector) super.clone();
+            for(int i = 0; i<mas.length; i++){
+                clon.add(mas[i], i);
+            }
+           return clon;
+    }
 
 }
