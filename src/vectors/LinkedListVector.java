@@ -207,7 +207,8 @@ public class LinkedListVector implements Vector {
         return hash;
     }
 
-    public boolean equals(LinkedListVector m) {
+    @Override
+    public boolean equals(Object m) {
         if (this == m) {
             return true;
         }
@@ -234,5 +235,7 @@ public class LinkedListVector implements Vector {
         temp2 = null;
         return true;
     }
+    
+    
 
 }
