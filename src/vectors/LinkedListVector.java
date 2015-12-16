@@ -52,7 +52,7 @@ public class LinkedListVector implements Vector {
             addLast(m[i]);
         }
     }
-    
+
     @Override
     public void addArray(Vector m) {
         int z = 0;
@@ -125,7 +125,7 @@ public class LinkedListVector implements Vector {
         } else {
             double value = 0;
             Link temp = head;
-            for (int i = 0; i < index ; i++) {
+            for (int i = 0; i < index; i++) {
                 temp = temp.next;
             }
             value = temp.value;
@@ -166,16 +166,16 @@ public class LinkedListVector implements Vector {
     public int size() {
         return length;
     }
-    
+
     @Override
-    public int maxSize(Vector m, Vector n){
+    public int maxSize(Vector m, Vector n) {
         if (compare(m, n) == 0) {
             return m.size();
         } else {
             return n.size();
         }
     }
-    
+
     @Override
     public int minSize(Vector m, Vector n) {
         if (compare(m, n) == 0) {
@@ -184,7 +184,7 @@ public class LinkedListVector implements Vector {
             return m.size();
         }
     }
-    
+
     @Override
     public int compare(Vector m, Vector n) { // method for compare vectors
         if (n.size() <= m.size()) {
@@ -206,8 +206,6 @@ public class LinkedListVector implements Vector {
         hash = 17 * hash + this.length;
         return hash;
     }
-    
-    
 
     public boolean equals(LinkedListVector m) {
         if (this == m) {
@@ -223,22 +221,18 @@ public class LinkedListVector implements Vector {
         if (this.length != other.length) {
             return false;
         }
-        Link temp1 =  this.head;
-        Link temp2 = other.head;         
-        for(int i = 0; i<this.length; i++){    
-        if (!Objects.equals(temp1, temp2)) {
-            return false;
-        }
-        temp1 = this.head.next;
-        temp2 = other.head.next;
+        Link temp1 = this.head;
+        Link temp2 = other.head;
+        for (int i = 0; i < this.length; i++) {
+            if (!Objects.equals(temp1, temp2)) {
+                return false;
+            }
+            temp1 = this.head.next;
+            temp2 = other.head.next;
         }
         temp1 = null;
         temp2 = null;
         return true;
     }
-
-    
-    
-    
 
 }

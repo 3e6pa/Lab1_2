@@ -172,7 +172,6 @@ public class ArrayVector implements Vector {
         return hash;
     }
 
-
     public boolean equals(ArrayVector m) {
         if (this == m) {
             return true;
@@ -190,7 +189,7 @@ public class ArrayVector implements Vector {
         for (int i = 0; i < m.size(); i++) {
             if (this.getValue(i) != other.getValue(i)) {
                 return false;
-            } 
+            }
         }
         return true;
     }
