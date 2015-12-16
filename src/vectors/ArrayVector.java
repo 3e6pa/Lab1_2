@@ -159,5 +159,12 @@ public class ArrayVector implements Vector{
         }*/
     }
 
+    @Override
+    public String toString() {
+        return "ArrayVector{" + "mas=" + mas + ", pos=" + pos + '}';
+    }
+    
+    
+
     
 }

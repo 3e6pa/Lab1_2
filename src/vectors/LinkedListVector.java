@@ -192,4 +192,11 @@ public class LinkedListVector implements Vector {
         }
     }
 
+    @Override
+    public String toString() {
+        return "LinkedListVector{" + "head = " + head.value + ", length = " + length + '}';
+    }
+    
+    
+
 }

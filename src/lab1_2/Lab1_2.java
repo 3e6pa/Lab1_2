@@ -9,7 +9,6 @@ import vectors.Vectors;
 import vectors.Vector;
 import vectors.LinkedListVector;
 import vectors.ArrayVector;
-import vector.*;
 
 /**
  *
@@ -40,6 +39,9 @@ public class Lab1_2 {
         //test
         System.out.println("List 0 = " + vectList.getValue(0));
         System.out.println("List 9 = " + vectList.getValue(9));
+        
+        StringBuffer str = new StringBuffer(vectList.toString());
+        System.out.println(str);
 
 
         
