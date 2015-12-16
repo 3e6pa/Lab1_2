@@ -5,6 +5,8 @@
  */
 package vector;
 
+import vectors.ArrayVector;
+
 /**
  *
  * @author User

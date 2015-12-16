@@ -5,6 +5,10 @@
  */
 package lab1_2;
 
+import vectors.Vectors;
+import vectors.Vector;
+import vectors.LinkedListVector;
+import vectors.ArrayVector;
 import vector.*;
 
 /**
@@ -31,6 +35,8 @@ public class Lab1_2 {
 
         Vector sum = Vectors.sumVetors(vect1, vectList);
         sum.show();
+        
+        
         //test
         System.out.println("List 0 = " + vectList.getValue(0));
         System.out.println("List 9 = " + vectList.getValue(9));

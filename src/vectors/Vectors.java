@@ -3,7 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package vector;
+package vectors;
+
+import vectors.Vector;
+import vectors.ArrayVector;
 
 /**
  *
