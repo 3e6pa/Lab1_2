@@ -123,7 +123,7 @@ public class LinkedListVector implements Vector {
         } else {
             double value = 0;
             Link temp = head;
-            for (int i = 0; i < index - 1; i++) {
+            for (int i = 0; i < index ; i++) {
                 temp = temp.next;
             }
             value = temp.value;
