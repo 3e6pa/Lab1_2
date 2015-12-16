@@ -95,7 +95,6 @@ public class ArrayVector implements Vector{
         }
     }
 
-    @Override
     public double getValue(int index) {
         if (index > mas.length) {
             System.out.print("Out of range, last element");

@@ -9,7 +9,7 @@ package vector;
  *
  * @author viks
  */
-public class LinkedListVector implements Vector{
+public class LinkedListVector implements Vector {
 
     Link head;
     int length;
@@ -36,6 +36,18 @@ public class LinkedListVector implements Vector{
 
         public void setValue(double value) {
             this.value = value;
+        }
+    }
+
+    @Override
+    public void addArray(double m[]) {
+        int z = 0;
+        if (head == null) {
+            addLast(m[0]);
+            z++;
+        }
+        for (int i = z; i < m.length; i++) {
+            addLast(m[i]);
         }
     }
 

@@ -12,6 +12,8 @@ package vector;
 public interface Vector {
 
     void addLast(double value);
+    
+    void addArray(double[] value);
 
     void add(double value, int index);
 
@@ -22,5 +24,6 @@ public interface Vector {
     int size();
     
     double getValue(int index);
+   
 
 }
