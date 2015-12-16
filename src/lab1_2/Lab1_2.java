@@ -42,6 +42,14 @@ public class Lab1_2 {
         
         StringBuffer str = new StringBuffer(vectList.toString());
         System.out.println(str);
+        
+        if (vectList.equals(vectList)) 
+            System.out.println("True");
+         else System.out.println("False");
+        
+        if (vect1.equals(vect1)) 
+            System.out.println("True");
+         else System.out.println("False");
 
 
         

@@ -5,11 +5,13 @@
  */
 package vectors;
 
+import java.util.Arrays;
+
 /**
  *
  * @author User
  */
-public class ArrayVector implements Vector{
+public class ArrayVector implements Vector {
 
     private double[] mas;
     private int pos;
@@ -28,8 +30,8 @@ public class ArrayVector implements Vector{
     }
 
     @Override
-    public void remove( int index) {
-        if ((index >= 0) && (index <= mas.length-1)) {
+    public void remove(int index) {
+        if ((index >= 0) && (index <= mas.length - 1)) {
             bias(index, index);
         } else {
             System.out.println("Range of out array" + mas.length);
@@ -37,7 +39,7 @@ public class ArrayVector implements Vector{
     }
 
     public void del(int begin, int end) {
-        if ((begin >= 0) && (end <= mas.length-1) && (end >= begin)) {
+        if ((begin >= 0) && (end <= mas.length - 1) && (end >= begin)) {
             bias(begin, end);
         } else {
             System.out.println("Range of out array" + mas.length + " or not correct begin and end");
@@ -45,17 +47,17 @@ public class ArrayVector implements Vector{
     }
 
     protected void bias(int a, int b) {
-        if (b != mas.length-1) {
-            for (int i = b+1 ; i < mas.length; i++) {
-                mas[i-(b-a)-1] = mas[i];
+        if (b != mas.length - 1) {
+            for (int i = b + 1; i < mas.length; i++) {
+                mas[i - (b - a) - 1] = mas[i];
             }
         }
         double[] buf = mas;
-        mas = new double [mas.length - (b-a)-1];
-        for (int i = 0; i < mas.length ; i++) {
+        mas = new double[mas.length - (b - a) - 1];
+        for (int i = 0; i < mas.length; i++) {
             mas[i] = buf[i];
         }
-        pos = mas.length-1;
+        pos = mas.length - 1;
     }
 
     @Override
@@ -67,15 +69,13 @@ public class ArrayVector implements Vector{
     }
 
     @Override
-    public int maxSize(Vector m, Vector n ) {
+    public int maxSize(Vector m, Vector n) {
         if (compare(m, n) == 0) {
             return m.size();
         } else {
             return n.size();
         }
     }
-    
-    
 
     @Override
     public int compare(Vector m, Vector n) { // method for compare vectors
@@ -163,8 +163,36 @@ public class ArrayVector implements Vector{
     public String toString() {
         return "ArrayVector{" + "mas=" + mas + ", pos=" + pos + '}';
     }
-    
-    
 
-    
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 37 * hash + Arrays.hashCode(this.mas);
+        hash = 37 * hash + this.pos;
+        return hash;
+    }
+
+
+    public boolean equals(ArrayVector m) {
+        if (this == m) {
+            return true;
+        }
+        if (m == null) {
+            return false;
+        }
+        if (getClass() != m.getClass()) {
+            return false;
+        }
+        final ArrayVector other = (ArrayVector) m;
+        if (this.size() != other.size()) {
+            return false;
+        }
+        for (int i = 0; i < m.size(); i++) {
+            if (this.getValue(i) != other.getValue(i)) {
+                return false;
+            } 
+        }
+        return true;
+    }
+
 }

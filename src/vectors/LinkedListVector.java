@@ -1,5 +1,7 @@
 package vectors;
 
+import java.util.Objects;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -196,6 +198,46 @@ public class LinkedListVector implements Vector {
     public String toString() {
         return "LinkedListVector{" + "head = " + head.value + ", length = " + length + '}';
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 17 * hash + Objects.hashCode(this.head);
+        hash = 17 * hash + this.length;
+        return hash;
+    }
+    
+    
+
+    public boolean equals(LinkedListVector m) {
+        if (this == m) {
+            return true;
+        }
+        if (m == null) {
+            return false;
+        }
+        if (getClass() != m.getClass()) {
+            return false;
+        }
+        final LinkedListVector other = (LinkedListVector) m;
+        if (this.length != other.length) {
+            return false;
+        }
+        Link temp1 =  this.head;
+        Link temp2 = other.head;         
+        for(int i = 0; i<this.length; i++){    
+        if (!Objects.equals(temp1, temp2)) {
+            return false;
+        }
+        temp1 = this.head.next;
+        temp2 = other.head.next;
+        }
+        temp1 = null;
+        temp2 = null;
+        return true;
+    }
+
+    
     
     
 
