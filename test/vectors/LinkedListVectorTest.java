@@ -328,7 +328,7 @@ public class LinkedListVectorTest {
         etalon.add(105, 5);
         clon.show();
          boolean isPass = true;
-            if (etalon != etalon) {
+            if (clon == etalon) {
                 isPass = false;
             }
         assertTrue(isPass);
