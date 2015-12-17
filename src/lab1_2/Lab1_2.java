@@ -24,6 +24,8 @@ public class Lab1_2 {
         double[] a = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
         vect1.addArray(a);
         vect1.show();
+        
+    
 
         Vector vectList1 = new LinkedListVector();
         vectList1.addArray(a);
@@ -62,6 +64,7 @@ public class Lab1_2 {
         }
         vect1.addLast(scalar);
         vect2.show();
+        vectList1.addLast(5);
         vectList2.show();
 
     }
