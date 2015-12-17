@@ -201,8 +201,8 @@ public class ArrayVector implements Vector {
     }
     
     @Override
-    public Object clone() throws CloneNotSupportedException  {
-            ArrayVector clon   = (ArrayVector) super.clone();
+    public Object clone() {
+            Vector clon = new ArrayVector();
             for(int i = 0; i<mas.length; i++){
                 clon.add(mas[i], i);
             }

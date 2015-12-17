@@ -9,7 +9,7 @@ package vectors;
  *
  * @author viks
  */
-public interface Vector extends Cloneable {
+public interface Vector {
 
     void addLast(double value);
     
@@ -33,7 +33,7 @@ public interface Vector extends Cloneable {
 
     public void addArray(Vector n);
     
-    public Object clone()throws CloneNotSupportedException;
+    public Object clone();
    
 
 }

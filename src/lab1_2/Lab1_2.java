@@ -23,12 +23,17 @@ public class Lab1_2 {
 
      
         System.out.println("clone");
+        Vector clon = new LinkedListVector();
         Vector etalon = new LinkedListVector();
-        LinkedListVector instance = new LinkedListVector();
         double[] a = {1,2,3,4,5,6,7,8,9};
         etalon.addArray(a);
-        Object result = instance.clone();
-        result.
+        Object  result = etalon.clone();
+        clon = (LinkedListVector) result;
+        clon.show();
+        
+        etalon.add(105, 5);
+        clon.show();
+        
       //  System.out.println("instance.getValue(0) = "+ instance.getValue(0)+ ", value = " +value);
     }
 }
