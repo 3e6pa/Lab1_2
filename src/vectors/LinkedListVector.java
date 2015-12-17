@@ -52,6 +52,11 @@ public class LinkedListVector implements Vector {
             addLast(m[i]);
         }
     }
+    
+     @Override
+    public String toString() {
+        return "LinkedListVector{" + "head = " + head.value + ", length = " + length + '}';
+    }
 
     @Override
     public void addArray(Vector m) {
@@ -61,17 +66,35 @@ public class LinkedListVector implements Vector {
             z++;
         }
         for (int i = z; i < m.size(); i++) {
-            addLast(m.getValue(z));
+            addLast(m.getValue(i));
+           
         }
     }
 
-    public void addFirst(double value) {
+    public void addFirst(double value) { 
+        if (head == null){
+            Link e = new Link();
+            e.setValue(value);
+            head = e;
+            head.next = head.prev = e;
+            length++;
+        } else {
         Link temp = head;
         Link e = new Link(temp, temp.prev, value); //next, prev
         head = e;
         e.next.prev = e;
         e.prev.next = e;
-        length++;
+        }
+    }
+    
+    @Override
+    public void show() {
+        Link temp = head;
+        for (int i = 0; i < length; i++) {
+            System.out.print(temp.value + " ");
+            temp = temp.next;
+        }
+        System.out.println();
     }
 
     @Override
@@ -96,8 +119,8 @@ public class LinkedListVector implements Vector {
         if ((index < 1) || (index > length)) {
             System.out.println("Out fo range");
         } else {
-            Link temp = head;
-            for (int i = 0; i < index - 2; i++) {
+            Link temp = head.prev;
+            for (int i = 0; i < index ; i++) {
                 temp = temp.next;
             }
             Link e = new Link(temp.next, temp, value); // next, prew
@@ -107,15 +130,7 @@ public class LinkedListVector implements Vector {
         }
     }
 
-    @Override
-    public void show() {
-        Link temp = head;
-        for (int i = 0; i < length; i++) {
-            System.out.print(temp.value + " ");
-            temp = temp.next;
-        }
-        System.out.println();
-    }
+    
 
     @Override
     public double getValue(int index) {
@@ -129,6 +144,7 @@ public class LinkedListVector implements Vector {
                 temp = temp.next;
             }
             value = temp.value;
+           // System.out.println("Method getValue: value = "+ value + " index = "+index);
             return value;
         }
     }
@@ -142,11 +158,11 @@ public class LinkedListVector implements Vector {
 
     @Override
     public void remove(int index) {
-        if ((index < 2) || (index > length)) {
+        if ((index < 1) || (index > length)) {
             System.out.println("Out fo range, use E.removeFirst() or E.removeLast()");
         } else {
             Link temp = head;
-            for (int i = 0; i < index - 1; i++) {
+            for (int i = 0; i < index; i++) {
                 temp = temp.next;
             }
             temp.prev.next = temp.next;
@@ -194,10 +210,7 @@ public class LinkedListVector implements Vector {
         }
     }
 
-    @Override
-    public String toString() {
-        return "LinkedListVector{" + "head = " + head.value + ", length = " + length + '}';
-    }
+   
 
     @Override
     public int hashCode() {
@@ -237,11 +250,11 @@ public class LinkedListVector implements Vector {
     }
 
     @Override
-    public Object clone() throws CloneNotSupportedException {
-        LinkedListVector clon = (LinkedListVector) super.clone();
-        /*for (int i = 0; i < this.size(); i++) {
+    public Object clone()  {
+        LinkedListVector clon = new LinkedListVector();
+        for (int i = 0; i < this.size(); i++) {
             clon.addLast(this.getValue(i));
-        }*/
+        }
         return clon;
     }
 
