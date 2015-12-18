@@ -17,27 +17,58 @@ import static org.junit.Assert.*;
  * @author viks
  */
 public class ArrayVectorTest {
-    
+
     public ArrayVectorTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
 
+    @Test
+    public void testAddArray_doubleArr1() {
+        System.out.println("addArray1");
+        double[] m = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+        Vector instance = new ArrayVector();
+        instance.addArray(m);
+        boolean isPass = true;
+        for (int i = 0; i < m.length; i++) {
+            if ((instance.getValue(i) != m[i])) {
+                isPass = false;
+            }
+        }
+        assertTrue(isPass);
+    }
     
+     @Test
+    public void testAddArray_Vector2() {
+        System.out.println("addArray2");
+         double[] m = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+        Vector instance = new ArrayVector();
+        Vector vector = new ArrayVector();
+        instance.addArray(m);
+        vector.addArray(instance);
+        boolean isPass = true;
+        for (int i = 0; i < m.length; i++) {
+            if ((vector.getValue(i) != m[i])) {
+                isPass = false;
+            }
+        }
+        assertTrue(isPass);
+    }
+
     @Test
     public void testAddLast1() {
         System.out.println("addLast1");
@@ -50,7 +81,7 @@ public class ArrayVectorTest {
         }
         assertTrue(isPass);
     }
-    
+
     @Test
     public void testAddLast2() {
         System.out.println("addLast2");
@@ -66,7 +97,7 @@ public class ArrayVectorTest {
         }
         assertTrue(isPass);
     }
-    
+
     @Test
     public void testRemove() {
         System.out.println("remove");
@@ -76,7 +107,7 @@ public class ArrayVectorTest {
         instance.addArray(m);
         int size = instance.size();
         instance.remove(index);
-         boolean isPass = true;
+        boolean isPass = true;
         if (size == instance.size()) {
             isPass = false;
         }
@@ -84,19 +115,19 @@ public class ArrayVectorTest {
         //fail("The test case is a prototype.");
     }
 
-   @Test
+    @Test
     public void testDel() {
         System.out.println("del");
         int begin = 2;
         int end = 4;
-        int count = end - begin +1; //потому что удаляет с 2 - 4 включительно (2,3,4)
+        int count = end - begin + 1; //потому что удаляет с 2 - 4 включительно (2,3,4)
         double[] m = {1, 2, 3, 4, 5, 6, 7, 8, 9};
         ArrayVector instance = new ArrayVector();
         instance.addArray(m);
         int size = instance.size();
         instance.del(begin, end);
         boolean isPass = true;
-        if (size-count != instance.size()) {
+        if (size - count != instance.size()) {
             isPass = false;
         }
         assertTrue(isPass);
@@ -104,8 +135,7 @@ public class ArrayVectorTest {
         //fail("The test case is a prototype.");
     }
 
-    
-   /*  @Test
+    /*  @Test
     public void testBias() {
         System.out.println("bias");
         int a = 0;
@@ -115,9 +145,7 @@ public class ArrayVectorTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }*/
-
-   
-   @Test
+    @Test
     public void testAdd() {
         System.out.println("add value = 0.0, index = 5 ");
         double[] m = {1, 2, 3, 4, 5, 6, 7, 8, 9};
@@ -137,8 +165,7 @@ public class ArrayVectorTest {
         assertTrue(isPass);
     }
 
-    
-     @Test
+    @Test
     public void testMaxSize() {
         Vector m = new ArrayVector();
         Vector n = new ArrayVector();
@@ -153,11 +180,9 @@ public class ArrayVectorTest {
         assertEquals(expResult, result);
     }
 
-    
-    
     @Test
     public void testCompare() {
-         System.out.println("compare");
+        System.out.println("compare");
         Vector m = new ArrayVector();
         Vector n = new ArrayVector();
         double[] a = {1, 2, 3, 4, 5, 6, 7, 8, 9};
@@ -171,7 +196,6 @@ public class ArrayVectorTest {
         assertEquals(expResult, result);
     }
 
-   
     @Test
     public void testSize() {
         System.out.println("size");
@@ -185,8 +209,7 @@ public class ArrayVectorTest {
         assertEquals(expResult, result);
     }
 
-   
-   @Test
+    @Test
     public void testMinSize() {
         System.out.println("minSize");
         Vector m = new ArrayVector();
@@ -202,8 +225,7 @@ public class ArrayVectorTest {
         System.out.println("expResult = " + expResult + " result = " + result);
     }
 
-    
-     @Test
+    @Test
     public void testGetValue() {
         System.out.println("getValue");
         int index = 3;
@@ -216,34 +238,10 @@ public class ArrayVectorTest {
         assertEquals(expResult, result, 4.0);
     }
 
-    
-  /*  @Test
-    public void testAddArray_doubleArr() {
-        System.out.println("addArray");
-        double[] m = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-        double value = 0.5;
-        Vector instance = new ArrayVector();
-        instance.addArray(m);
-        int size = instance.size();
-        boolean isPass = true;
-        if ((instance.getValue(instance.size() - 1) != value)) {
-            isPass = false;
-        }
-        assertTrue(isPass);
-    }
-*/
-    
- /*   @Test
-    public void testAddArray_Vector() {
-        System.out.println("addArray");
-        Vector m = null;
-        ArrayVector instance = new ArrayVector();
-        instance.addArray(m);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-*/
-   
+    /*  
+     */
+ /*  
+     */
  /*   @Test
     public void testShow() {
         System.out.println("show");
@@ -276,8 +274,7 @@ public class ArrayVectorTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
-*/
-    
+     */
     @Test
     public void testEquals() {
         System.out.println("equals");
@@ -291,7 +288,6 @@ public class ArrayVectorTest {
         assertEquals(expResult, result);
     }
 
-    
     @Test
     public void testClone() {
         Vector clon = new ArrayVector();
