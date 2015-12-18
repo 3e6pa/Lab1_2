@@ -22,8 +22,9 @@ public class ArrayVector implements Vector {
     }
 
     public ArrayVector() {
+        mas = new double[1];
+        pos = -1;
     }
-    
 
     @Override
     public void addLast(double value) { //add element array
@@ -66,10 +67,16 @@ public class ArrayVector implements Vector {
 
     @Override
     public void add(double val, int index) { // add element array in index
-        if (index > mas.length) {
-            incArray(index);
+        if ((index == mas.length) || (index < 0)) {
+            System.out.println("Out of range");
+        } else {
+            incArray(mas.length + 1);
+            int count = mas.length - index  ;
+            for (int i = 0; i < count - 1; i++) {
+                mas[mas.length - 1 - i] = mas[mas.length - 2 - i];
+            }
+            mas[index] = val;
         }
-        mas[index] = val;
     }
 
     @Override
@@ -199,14 +206,14 @@ public class ArrayVector implements Vector {
         }
         return true;
     }
-    
+
     @Override
     public Object clone() {
-            Vector clon = new ArrayVector();
-            for(int i = 0; i<mas.length; i++){
-                clon.add(mas[i], i);
-            }
-           return clon;
+        Vector clon = new ArrayVector();
+        for (int i = 0; i < mas.length; i++) {
+            clon.add(mas[i], i);
+        }
+        return clon;
     }
 
 }

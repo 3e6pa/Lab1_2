@@ -320,17 +320,17 @@ public class LinkedListVectorTest {
     public void testClone() throws Exception {
         Vector clon = new LinkedListVector();
         Vector etalon = new LinkedListVector();
-        double[] a = {1,2,3,4,5,6,7,8,9};
+        double[] a = {1, 2, 3, 4, 5, 6, 7, 8, 9};
         etalon.addArray(a);
-        Object  result = etalon.clone();
+        Object result = etalon.clone();
         clon = (LinkedListVector) result;
         clon.show();
         etalon.add(105, 5);
         clon.show();
-         boolean isPass = true;
-            if (clon == etalon) {
-                isPass = false;
-            }
+        boolean isPass = true;
+        if (clon == etalon) {
+            isPass = false;
+        }
         assertTrue(isPass);
         // fail("The test case is a prototype.");
     }

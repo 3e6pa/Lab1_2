@@ -22,18 +22,17 @@ public class Lab1_2 {
     public static void main(String[] args)  {
 
      
-        System.out.println("clone");
-        Vector clon = new LinkedListVector();
-        Vector etalon = new LinkedListVector();
-        double[] a = {1,2,3,4,5,6,7,8,9};
-        etalon.addArray(a);
-        Object  result = etalon.clone();
-        clon = (LinkedListVector) result;
-        clon.show();
-        
-        etalon.add(105, 5);
-        clon.show();
-        
+     System.out.println("add value = 0.0, index = 5 ");
+        double[] m = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+        double value = 0.5;
+        int index = 8;
+        Vector instance = new ArrayVector();
+        instance.addArray(m);
+        instance.show();
+        int size = instance.size();
+        instance.addLast(value);
+        instance.show();
+        System.out.println(" size = "+size+" instance.size = "+instance.size());
       //  System.out.println("instance.getValue(0) = "+ instance.getValue(0)+ ", value = " +value);
     }
 }
