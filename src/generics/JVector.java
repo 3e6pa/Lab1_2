@@ -12,11 +12,11 @@ package generics;
  */
 public interface JVector<E>{
     
-    void addLast(Object value);
+    void addLast(E value);
     
-    void addArray(Object[] value);
+    void addArray(E[] value);
 
-    void add(Object value, int index);
+    void add(E value, int index);
 
     void show();
     
@@ -24,7 +24,7 @@ public interface JVector<E>{
     
     int size();
     
-    Object getValue(int index);
+    E getValue(int index);
     
     int maxSize(JVector m, JVector n);
     
