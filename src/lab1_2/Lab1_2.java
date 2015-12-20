@@ -5,10 +5,7 @@
  */
 package lab1_2;
 
-import vectors.Vectors;
-import vectors.Vector;
-import vectors.LinkedListVector;
-import vectors.ArrayVector;
+import generics.*;
 
 /**
  *
@@ -22,17 +19,10 @@ public class Lab1_2 {
     public static void main(String[] args)  {
 
      
-     System.out.println("add value = 0.0, index = 5 ");
-        double[] m = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-        double value = 0.5;
-        int index = 8;
-        Vector instance = new ArrayVector();
-        instance.addArray(m);
-        instance.show();
-        int size = instance.size();
-        instance.addLast(value);
-        instance.show();
-        System.out.println(" size = "+size+" instance.size = "+instance.size());
-      //  System.out.println("instance.getValue(0) = "+ instance.getValue(0)+ ", value = " +value);
+    JArrayListVector<Integer> test = new JArrayListVector(2);
+    test.addLast(new Integer(19));
+    test.addLast(new Integer(19));
+    test.addLast(new Integer(19));
+    test.show();
     }
 }
