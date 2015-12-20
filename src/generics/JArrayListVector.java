@@ -4,35 +4,35 @@
  * and open the template in the editor.
  */
 package generics;
+
 /**
  *
  * @author viks
  * @param <E>
  */
-public class JArrayListVector<E> implements JVector{
+public class JArrayListVector<E> implements JVector {
 
     private E[] mas;
     private int pos;
 
-    public  JArrayListVector( int size) {
+    public JArrayListVector(int size) {
         mas = (E[]) new Object[size];
         pos = -1;
     }
-    
 
-    public  JArrayListVector() {
+    public JArrayListVector() {
         mas = (E[]) new Object[10];
         pos = -1;
     }
-    
+
     @Override
     public void addLast(Object value) { //add element array
         if (pos + 1 == mas.length) {
             incArray(pos + 2);
         }
-        mas[++pos] = (E)value;
+        mas[++pos] = (E) value;
     }
-    
+
     @Override
     public void remove(int index) {
         if ((index >= 0) && (index <= mas.length - 1)) {
@@ -41,7 +41,7 @@ public class JArrayListVector<E> implements JVector{
             System.out.println("Range of out array" + mas.length);
         }
     }
-    
+
     protected void bias(int a, int b) {
         if (b != mas.length - 1) {
             for (int i = b + 1; i < mas.length; i++) {
@@ -49,28 +49,28 @@ public class JArrayListVector<E> implements JVector{
             }
         }
         E[] buf = mas;
-        mas = (E[])new Object[mas.length - (b - a) - 1];
+        mas = (E[]) new Object[mas.length - (b - a) - 1];
         for (int i = 0; i < mas.length; i++) {
             mas[i] = buf[i];
         }
         pos = mas.length - 1;
     }
-    
+
     @Override
-    public void add( Object val, int index) { // add element array in index
+    public void add(Object val, int index) { // add element array in index
         if ((index == mas.length) || (index < 0)) {
             System.out.println("Out of range");
         } else {
             incArray(mas.length + 1);
-            int count = mas.length - index  ;
+            int count = mas.length - index;
             for (int i = 0; i < count - 1; i++) {
                 mas[mas.length - 1 - i] = mas[mas.length - 2 - i];
             }
             mas[index] = (E) val;
         }
     }
-    
-     @Override
+
+    @Override
     public int maxSize(JVector m, JVector n) {
         if (compare(m, n) == 0) {
             return m.size();
@@ -78,7 +78,7 @@ public class JArrayListVector<E> implements JVector{
             return n.size();
         }
     }
-    
+
     public int compare(JVector m, JVector n) { // method for compare vectors
         if (n.size() <= m.size()) {
             return 0;
@@ -86,12 +86,12 @@ public class JArrayListVector<E> implements JVector{
             return 1;
         }
     }
-    
+
     @Override
     public int size() { // for length array
         return mas.length;
     }
-    
+
     @Override
     public int minSize(JVector m, JVector n) {
         if (compare(m, n) == 0) {
@@ -100,7 +100,7 @@ public class JArrayListVector<E> implements JVector{
             return m.size();
         }
     }
-    
+
     @Override
     public Object getValue(int index) {
         if (index > mas.length) {
@@ -113,7 +113,7 @@ public class JArrayListVector<E> implements JVector{
             return mas[index];
         }
     }
-    
+
     private void incArray(int size) { // method for increase array
         E[] buf = (E[]) new Object[mas.length];
         for (int i = 0; i < mas.length; i++) {
@@ -133,12 +133,12 @@ public class JArrayListVector<E> implements JVector{
         }
         int i;
         for (i = 0; i < m.length; i++) {
-            mas[i + (pos + 1)] = (E)m[i];
+            mas[i + (pos + 1)] = (E) m[i];
         }
         pos = pos + i;
     }
-    
-     @Override
+
+    @Override
     public void addArray(JVector m) {
         if ((mas.length - pos) <= m.size()) {
             incArray(mas.length + m.size());
@@ -149,8 +149,8 @@ public class JArrayListVector<E> implements JVector{
         }
         pos = pos + i;
     }
-    
-     @Override
+
+    @Override
     public void show() {
         for (int i = 0; i < mas.length; i++) {
             System.out.print(mas[i] + " ");
@@ -160,13 +160,13 @@ public class JArrayListVector<E> implements JVector{
        *     System.out.print(buf[i] + " ");
         }*/
     }
-    
+
     @Override
     public String toString() {
         return "ArrayVector{" + "mas=" + mas + ", pos=" + pos + '}';
     }
-    
-     @Override
+
+    @Override
     public boolean equals(Object m) {
         if (this == m) {
             return true;

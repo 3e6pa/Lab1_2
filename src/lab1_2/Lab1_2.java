@@ -24,5 +24,9 @@ public class Lab1_2 {
     test.addLast(new Integer(19));
     test.addLast(new Integer(19));
     test.show();
+    
+    JVector<String> test2 = new JLinkedListVector();
+    test2.addLast("lol");
+    test2.show();
     }
 }
