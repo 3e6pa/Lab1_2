@@ -72,7 +72,7 @@ public class JLinkedListVector<E> implements JVector {
         }
     }
 
-    public void addFirst(double value) {
+    public void addFirst(Object value) {
         if (head == null) {
             Link e = new Link();
             e.setValue(value);

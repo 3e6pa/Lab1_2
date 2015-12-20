@@ -16,7 +16,7 @@ public interface JVector<E>{
     
     void addArray(Object[] value);
 
-    void add(E value, int index);
+    void add(Object value, int index);
 
     void show();
     
