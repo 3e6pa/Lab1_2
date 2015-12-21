@@ -24,6 +24,15 @@ public class LinkedListVector implements Vector {
         length = 0;
         index = 0;
     }
+    
+    public LinkedListVector(double...value){
+        head = null;
+        length = 0;
+        index = 0;
+        for(double x : value){
+            addLast(x);
+        }
+    }
 
     @Override
     public Iterator iterator() {

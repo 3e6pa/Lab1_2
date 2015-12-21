@@ -21,6 +21,13 @@ public class JLinkedListVector<E> implements JVector {
         head = null;
         length = 0;
     }
+    
+     public JLinkedListVector(Object...value) {
+        head = null;
+        for(Object x : value){
+            addLast(x);
+        }
+     }
 
     class Link {
 

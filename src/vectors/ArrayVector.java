@@ -32,6 +32,17 @@ public class ArrayVector implements Vector {
         index = -1;
 
     }
+    
+    public ArrayVector(double...value){
+        pos = 0;
+        mas = new double[value.length];
+        for(double x : value){
+            mas[pos] = x;
+            pos++;
+        }
+    }
+    
+    
 
     @Override
     public void addLast(double value) { //add element array

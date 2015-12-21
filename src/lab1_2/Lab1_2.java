@@ -47,5 +47,17 @@ public class Lab1_2 {
         for(double x : vectList1){
             System.out.print(x+" ");
         }
+        System.out.println();
+        Vector vectList2 = new ArrayVector(1,2,3,4,5,6,7,8,9);
+        vectList2.show();
+        
+        Vector vectList3 = new LinkedListVector(10,11,12,13,14,15,16,17,18,19);
+        vectList3.show();
+        
+        JArrayListVector<Integer> vectList4 = new JArrayListVector(2,4,6,8,10,12,14,16,18,20);
+        vectList4.show();
+        
+        JVector<String> vectList5 = new JLinkedListVector("Кто ","Cказал ", "Что?");
+        vectList5.show();
     }
 }

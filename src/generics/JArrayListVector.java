@@ -24,6 +24,15 @@ public class JArrayListVector<E> implements JVector {
         mas = (E[]) new Object[10];
         pos = -1;
     }
+    
+    public JArrayListVector(Object...value){
+        mas = (E[]) new Object[value.length];
+        pos = 0;
+        for(Object x: value){
+            mas[pos] = (E) x;
+            pos++;
+        }
+    }
 
     @Override
     public void addLast(Object value) { //add element array
