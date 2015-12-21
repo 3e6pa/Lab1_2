@@ -17,6 +17,7 @@ public class LinkedListVector implements Vector {
     Link head;
     int length;
     int index;
+    Link temp;
 
     public LinkedListVector() {
         head = null;
@@ -26,6 +27,7 @@ public class LinkedListVector implements Vector {
 
     @Override
     public Iterator iterator() {
+        temp = head;
         return new Iterator() {
             @Override
             public boolean hasNext() {
@@ -35,7 +37,8 @@ public class LinkedListVector implements Vector {
             @Override
             public Object next() {  
                 index++;
-                return getValue(index);
+                temp = temp.next;
+                return temp.prev.value;
             }
 
             @Override
@@ -59,7 +62,7 @@ public class LinkedListVector implements Vector {
 
         Link() {
         }
-
+        
         public void setValue(double value) {
             this.value = value;
         }
