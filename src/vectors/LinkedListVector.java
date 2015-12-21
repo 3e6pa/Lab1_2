@@ -16,15 +16,33 @@ public class LinkedListVector implements Vector {
 
     Link head;
     int length;
+    int index;
 
     public LinkedListVector() {
         head = null;
         length = 0;
+        index = -1;
     }
 
     @Override
     public Iterator iterator() {
-        return null;
+        return new Iterator() {
+            @Override
+            public boolean hasNext() {
+                return index != size()-1;
+            }
+
+            @Override
+            public Object next() {  
+                index++;
+                return getValue(index);
+            }
+
+            @Override
+            public void remove() {
+                throw new UnsupportedOperationException("Not supported yet.");
+            }
+        };
     }
 
     class Link {

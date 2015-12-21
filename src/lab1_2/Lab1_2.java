@@ -33,10 +33,19 @@ public class Lab1_2 {
         double[] a = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
         vectList.addArray(a);
         vectList.show();
+        
+        Vector vectList1 = new LinkedListVector();
+        vectList1.addArray(a);
+        vectList1.show();
        
         
         for(double x : vectList){
-            System.out.println(x);
+            System.out.print(x+" ");
+        }
+        System.out.println();
+        
+        for(double x : vectList1){
+            System.out.print(x+" ");
         }
     }
 }
