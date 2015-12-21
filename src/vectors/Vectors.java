@@ -51,6 +51,14 @@ public class Vectors {
         return scalar;
     }
     
+    public static Vector rundom(int size, double min, double max ){
+        Vector vect = new ArrayVector(size);
+        for (int i = 0; i<size; i++){
+            vect.addLast(min + (int)(Math.random() * ((max - min) + 1))); // int, caz so good look it
+        }
+        return (Vector) vect;
+    }
+    
     public static void mul(Vector m, double val){
          for (int i = 0; i < m.size(); i++) {
             m.add((m.getValue(i))*val, i);

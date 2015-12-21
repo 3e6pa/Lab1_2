@@ -59,5 +59,9 @@ public class Lab1_2 {
         
         JVector<String> vectList5 = new JLinkedListVector("Кто ","Cказал ", "Что?");
         vectList5.show();
+        
+        Vector listRandom;
+        listRandom = Vectors.rundom(10, -5, 20);
+        listRandom.show();
     }
 }
