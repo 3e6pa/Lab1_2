@@ -6,6 +6,7 @@
 package lab1_2;
 
 import generics.*;
+import vectors.*;
 
 /**
  *
@@ -16,17 +17,26 @@ public class Lab1_2 {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args)  {
+    public static void main(String[] args) {
 
-     
-    JArrayListVector<Integer> test = new JArrayListVector(2);
-    test.addLast(new Integer(19));
-    test.addLast(new Integer(19));
-    test.addLast(new Integer(19));
-    test.show();
-    
-    JVector<String> test2 = new JLinkedListVector();
-    test2.addLast("lol");
-    test2.show();
+        JArrayListVector<Integer> test = new JArrayListVector(2);
+        test.addLast(new Integer(19));
+        test.addLast(new Integer(19));
+        test.addLast(new Integer(19));
+        test.show();
+
+        JVector<String> test2 = new JLinkedListVector();
+        test2.addLast("lol");
+        test2.show();
+
+        Vector vectList = new ArrayVector(2);
+        double[] a = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        vectList.addArray(a);
+        vectList.show();
+       
+        
+        for(double x : vectList){
+            System.out.println(x);
+        }
     }
 }

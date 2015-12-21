@@ -1,5 +1,6 @@
 package vectors;
 
+import java.util.Iterator;
 import java.util.Objects;
 
 /*
@@ -19,6 +20,11 @@ public class LinkedListVector implements Vector {
     public LinkedListVector() {
         head = null;
         length = 0;
+    }
+
+    @Override
+    public Iterator iterator() {
+        return null;
     }
 
     class Link {

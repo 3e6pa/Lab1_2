@@ -5,11 +5,13 @@
  */
 package vectors;
 
+import java.util.Iterator;
+
 /**
  *
  * @author viks
  */
-public interface Vector {
+public interface Vector extends Iterable<Double>{
 
     void addLast(double value);
     
@@ -34,6 +36,7 @@ public interface Vector {
     public void addArray(Vector n);
     
     public Object clone();
+    
    
 
 }

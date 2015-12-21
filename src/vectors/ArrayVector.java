@@ -6,6 +6,7 @@
 package vectors;
 
 import java.util.Arrays;
+import java.util.Iterator;
 
 /**
  *
@@ -13,17 +14,23 @@ import java.util.Arrays;
  */
 public class ArrayVector implements Vector {
 
+ 
     private double[] mas;
     private int pos;
+    private int index;
 
     public ArrayVector(int size) {
         mas = new double[size];
         pos = -1;
+        index = -1;
+
     }
 
     public ArrayVector() {
         mas = new double[1];
         pos = -1;
+        index = -1;
+
     }
 
     @Override
@@ -71,7 +78,7 @@ public class ArrayVector implements Vector {
             System.out.println("Out of range");
         } else {
             incArray(mas.length + 1);
-            int count = mas.length - index  ;
+            int count = mas.length - index;
             for (int i = 0; i < count - 1; i++) {
                 mas[mas.length - 1 - i] = mas[mas.length - 2 - i];
             }
@@ -214,6 +221,27 @@ public class ArrayVector implements Vector {
             clon.add(mas[i], i);
         }
         return clon;
+    }
+
+    @Override
+    public Iterator iterator() {
+        return new Iterator() {
+            @Override
+            public boolean hasNext() {
+                return index != mas.length-1;
+            }
+
+            @Override
+            public Object next() {  
+                index++;
+                return getValue(index);
+            }
+
+            @Override
+            public void remove() {
+                throw new UnsupportedOperationException("Not supported yet.");
+            }
+        };
     }
 
 }
