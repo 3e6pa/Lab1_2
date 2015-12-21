@@ -22,7 +22,7 @@ public class LinkedListVector implements Vector {
     public LinkedListVector() {
         head = null;
         length = 0;
-        index = -1;
+        index = 0;
     }
 
     @Override
@@ -31,7 +31,7 @@ public class LinkedListVector implements Vector {
         return new Iterator() {
             @Override
             public boolean hasNext() {
-                return index != size()-1;
+                return index != size();
             }
 
             @Override
