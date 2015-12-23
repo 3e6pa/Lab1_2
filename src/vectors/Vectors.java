@@ -5,6 +5,18 @@
  */
 package vectors;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.PrintWriter;
+import java.io.Reader;
+import java.io.StreamTokenizer;
+import java.io.Writer;
 import vectors.Vector;
 import vectors.ArrayVector;
 
@@ -28,6 +40,64 @@ public class Vectors {
         return vect;
 
     }
+    
+    public static void outputVector(Vector m, OutputStream out){
+        try {
+        DataOutputStream streamOut = new DataOutputStream(out);
+        streamOut.writeInt(m.size());
+      //  m.show();
+        for (double val : m){
+           //System.out.print(val+" ");
+           streamOut.writeDouble(val);
+        }
+        streamOut.close();
+        } catch (IOException e){
+            System.out.println("Error file: "+e);
+        }
+    }
+    
+    public static Vector inputVector(InputStream in) throws IOException{
+     
+        Vector result;
+        try (DataInputStream streamIn = new DataInputStream(in)) {
+            int size = streamIn.readInt();
+            result = new ArrayVector(/*streamIn.readInt()*/);
+          //  System.out.println(streamIn.readInt());
+          
+            for (int i = 0; i<size; i++){
+                result.add(streamIn.readDouble(), i);
+                //System.out.println(result.getValue(i));
+                        
+            }
+            streamIn.close();
+            }
+        
+        return result;
+    }
+    
+    public static void writeVector(Vector m, Writer out){
+        PrintWriter output = new PrintWriter( new BufferedWriter(out));
+        for (double val : m){
+            output.print(val+" ");
+        }
+        output.close();
+    }
+    
+    public static Vector readVector(Reader in) throws IOException{
+        
+        BufferedReader bufRead = new BufferedReader(in);
+        StreamTokenizer token = new StreamTokenizer(bufRead);     
+        Vector buf = new LinkedListVector();
+        while (token.nextToken() != token.TT_EOF){
+             buf.addLast(token.nval);
+        }
+        Vector vect = new ArrayVector();
+        for (double val : buf){
+            vect.addLast(val);
+        }
+        return vect;
+    }
+    
 
     public static double scalar(Vector m, Vector n) {
         Vector buf = new ArrayVector(maxSize(m, n));

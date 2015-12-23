@@ -6,6 +6,12 @@
 package lab1_2;
 
 import generics.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import vectors.*;
 
 /**
@@ -13,55 +19,44 @@ import vectors.*;
  * @author User
  */
 public class Lab1_2 {
-
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-
-        JArrayListVector<Integer> test = new JArrayListVector(2);
-        test.addLast(new Integer(19));
-        test.addLast(new Integer(19));
-        test.addLast(new Integer(19));
-        test.show();
-
-        JVector<String> test2 = new JLinkedListVector();
-        test2.addLast("lol");
-        test2.show();
-
-        Vector vectList = new ArrayVector(2);
-        double[] a = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-        vectList.addArray(a);
-        vectList.show();
+        Vector vect = new ArrayVector(1,2,3,4,5,6,7,8,9,10,11,12,13,14);
+        try {
+        FileOutputStream file = new FileOutputStream("vectByte.txt");
+        Vectors.outputVector(vect, file);
+        }catch (IOException e) {
+            System.out.println("Error create file: "+e);
+        }
         
-        Vector vectList1 = new LinkedListVector();
-        vectList1.addArray(a);
-        vectList1.show();
        
+        Vector vect1  ;
         
-        for(double x : vectList){
-            System.out.print(x+" ");
+        try {
+        FileInputStream vectByte = new FileInputStream("vectByte.txt");       
+        vect1 = Vectors.inputVector(vectByte);
+        vect1.show();
+        }catch (IOException e) {
+            System.out.println("Хрень какая то: "+e);
+            
         }
-        System.out.println();
         
-        for(double x : vectList1){
-            System.out.print(x+" ");
+        try{
+        FileWriter file2 = new FileWriter("vectSymble.txt");
+        Vectors.writeVector(vect, file2);
+        }catch (IOException e) {
+            System.out.println("Чет не то: "+e);     
         }
-        System.out.println();
-        Vector vectList2 = new ArrayVector(1,2,3,4,5,6,7,8,9);
-        vectList2.show();
-        
-        Vector vectList3 = new LinkedListVector(10,11,12,13,14,15,16,17,18,19);
-        vectList3.show();
-        
-        JArrayListVector<Integer> vectList4 = new JArrayListVector(2,4,6,8,10,12,14,16,18,20);
-        vectList4.show();
-        
-        JVector<String> vectList5 = new JLinkedListVector("Кто ","Cказал ", "Что?");
-        vectList5.show();
-        
-        Vector listRandom;
-        listRandom = Vectors.rundom(10, -5, 20);
-        listRandom.show();
+         Vector vect2  ;
+        try {
+        FileReader vectSymble= new FileReader("vectSymble.txt");       
+        vect2 = Vectors.readVector(vectSymble);
+        vect2.show();
+        }catch (IOException e) {
+            System.out.println("Хрень какая то: "+e);
+            
+        }
     }
 }

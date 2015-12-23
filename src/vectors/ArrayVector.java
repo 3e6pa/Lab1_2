@@ -5,6 +5,7 @@
  */
 package vectors;
 
+import java.io.DataInputStream;
 import java.util.Arrays;
 import java.util.Iterator;
 
@@ -17,19 +18,17 @@ public class ArrayVector implements Vector {
  
     private double[] mas;
     private int pos;
-    private int index;
+    int index = 0 ;
 
     public ArrayVector(int size) {
         mas = new double[size];
         pos = -1;
-        index = -1;
 
     }
 
     public ArrayVector() {
         mas = new double[1];
         pos = -1;
-        index = -1;
 
     }
     
@@ -41,6 +40,8 @@ public class ArrayVector implements Vector {
             pos++;
         }
     }
+
+
     
     
 
@@ -236,16 +237,16 @@ public class ArrayVector implements Vector {
 
     @Override
     public Iterator iterator() {
+      index = 0 ;
         return new Iterator() {
             @Override
             public boolean hasNext() {
-                return index != mas.length-1;
+                return index != mas.length;
             }
 
             @Override
             public Object next() {  
-                index++;
-                return getValue(index);
+                return getValue(index++);
             }
 
             @Override
