@@ -11,7 +11,7 @@ import java.util.Iterator;
  *
  * @author viks
  */
-public interface Vector extends Iterable<Double>{
+public interface Vector extends Iterable<Double> {
 
     void addLast(double value);
     

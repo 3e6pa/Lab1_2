@@ -5,6 +5,7 @@
  */
 package vectors;
 
+import java.io.Serializable;
 import java.io.DataInputStream;
 import java.util.Arrays;
 import java.util.Iterator;
@@ -13,7 +14,7 @@ import java.util.Iterator;
  *
  * @author User
  */
-public class ArrayVector implements Vector {
+public class ArrayVector implements Vector, Serializable  {
 
  
     private double[] mas;
@@ -40,10 +41,6 @@ public class ArrayVector implements Vector {
             pos++;
         }
     }
-
-
-    
-    
 
     @Override
     public void addLast(double value) { //add element array

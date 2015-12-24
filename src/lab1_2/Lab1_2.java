@@ -12,6 +12,9 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InvalidObjectException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import vectors.*;
 
 /**
@@ -22,8 +25,8 @@ public class Lab1_2 {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        Vector vect = new ArrayVector(1,2,3,4,5,6,7,8,9,10,11,12,13,14);
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
+        ArrayVector vect = new ArrayVector(1,2,3,4,5,6,7,8,9,10,11,12,13,14);
         try {
         FileOutputStream file = new FileOutputStream("vectByte.txt");
         Vectors.outputVector(vect, file);
@@ -58,5 +61,26 @@ public class Lab1_2 {
             System.out.println("Хрень какая то: "+e);
             
         }
+        
+        LinkedListVector vectL = new LinkedListVector(1,2,3,4,5,6,7,8,9,10,11,12,13,14);
+        System.out.println("*************Serialization**********(in file)");
+        ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("vectObject.obj"));
+        out.writeObject(vect);
+        out.writeObject(vectL);
+        out.close();
+        
+        try {
+        System.out.println("*************Serialization**********(from file)");
+        ObjectInputStream in = new ObjectInputStream(new FileInputStream("vectObject.obj"));
+        ArrayVector myVector1 = (ArrayVector)in.readObject();
+        LinkedListVector myVector2 = (LinkedListVector)in.readObject();
+        myVector1.show();
+        myVector2.show();
+        } catch (InvalidObjectException e){
+             System.out.println("Ваш object инвалид: "+e);
+        }
+        
+        
+        
     }
 }

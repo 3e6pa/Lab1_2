@@ -2,6 +2,7 @@ package vectors;
 
 import java.util.Iterator;
 import java.util.Objects;
+import java.io.Serializable;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -12,7 +13,7 @@ import java.util.Objects;
  *
  * @author viks
  */
-public class LinkedListVector implements Vector {
+public class LinkedListVector implements Vector, Serializable  {
 
     Link head;
     int length;
@@ -57,7 +58,7 @@ public class LinkedListVector implements Vector {
         };
     }
 
-    class Link {
+    class Link implements Serializable{
 
         Link next;
         Link prev;
