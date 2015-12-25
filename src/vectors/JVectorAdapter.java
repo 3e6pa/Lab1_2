@@ -14,6 +14,7 @@ import java.util.logging.Logger;
  * @author viks
  */
 public class JVectorAdapter implements Vector {
+
     private java.util.Vector<Double> vector;
 
     public JVectorAdapter(java.util.Vector<Double> vector) {
@@ -40,7 +41,7 @@ public class JVectorAdapter implements Vector {
     @Override
     public void show() {
         for (double value : this) {
-            System.out.print(value+" ");
+            System.out.print(value + " ");
         }
         System.out.println();
     }
@@ -69,21 +70,21 @@ public class JVectorAdapter implements Vector {
 
     @Override
     public Iterator<Double> iterator() {
-       return vector.iterator();
+        return vector.iterator();
     }
 
     @Override
     public Object clone() {
-       JVectorAdapter  clon;
+        JVectorAdapter clon;
         try {
             clon = (JVectorAdapter) super.clone();
             for (int i = 0; i < vector.size(); i++) {
-            clon.add(vector.get(i), i);
-            return clon;
-        }
+                clon.add(vector.get(i), i);
+                return clon;
+            }
         } catch (CloneNotSupportedException ex) {
             Logger.getLogger(JVectorAdapter.class.getName()).log(Level.SEVERE, null, ex);
-            
+
         }
         return null;
     }
