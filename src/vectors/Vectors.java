@@ -25,11 +25,20 @@ import vectors.ArrayVector;
  * @author User
  */
 public class Vectors {
+    
+    public static VectorFactory vectorFactory = new ArrayVectorFactory();
+    public static void setVectorFactory(VectorFactory factory){
+        vectorFactory = factory;
+    }
+    
+    public static Vector createInstance(int size){
+        return vectorFactory.newVector(size);
+    }
 
     public static Vector sumVetors(Vector m, Vector n) {
-        Vector vect = new ArrayVector(maxSize(m, n));
-        Vector buf1 = new ArrayVector(maxSize(m, n));
-        Vector buf2 = new ArrayVector(maxSize(m, n));
+        Vector vect = createInstance(maxSize(m, n));
+        Vector buf1 = createInstance(maxSize(m, n));
+        Vector buf2 = createInstance(maxSize(m, n));
         buf1.addArray(n);
         buf2.addArray(m);
         for (int i = 0; i < maxSize(n, m); i++) {
@@ -100,7 +109,7 @@ public class Vectors {
     
 
     public static double scalar(Vector m, Vector n) {
-        Vector buf = new ArrayVector(maxSize(m, n));
+        Vector buf = createInstance(maxSize(m, n));
         for (int i = 0; i < minSize(m, n); i++) {
             buf.add(n.getValue(i) * m.getValue(i), i);
         }
@@ -122,7 +131,7 @@ public class Vectors {
     }
     
     public static Vector rundom(int size, double min, double max ){
-        Vector vect = new ArrayVector(size);
+        Vector vect = createInstance(size);
         for (int i = 0; i<size; i++){
             vect.addLast(min + (int)(Math.random() * ((max - min) + 1))); // int, caz so good look it
         }
