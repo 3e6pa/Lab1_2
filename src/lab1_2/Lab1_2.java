@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.io.InvalidObjectException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 import vectors.*;
 
 /**
@@ -79,7 +80,16 @@ public class Lab1_2 {
         } catch (InvalidObjectException e){
              System.out.println("Ваш object инвалид: "+e);
         }
+        java.util.Vector<Double> test = new java.util.Vector<Double>();
         
+        
+        JVectorAdapter myAdapter = new JVectorAdapter (test);
+        myAdapter.addLast(11);
+        myAdapter.addLast(22);
+        myAdapter.addLast(33);
+        myAdapter.addLast(44);
+        myAdapter.add(0, 2);
+        myAdapter.show();
         
         
     }

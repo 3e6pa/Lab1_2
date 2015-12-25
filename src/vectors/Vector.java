@@ -26,12 +26,6 @@ public interface Vector extends Iterable<Double> {
     int size();
     
     double getValue(int index);
-    
-    int maxSize(Vector m, Vector n);
-    
-    int minSize(Vector m, Vector n);
-    
-    int compare(Vector m, Vector n);
 
     public void addArray(Vector n);
     

@@ -95,37 +95,14 @@ public class ArrayVector implements Vector, Serializable  {
         }
     }
 
-    @Override
-    public int maxSize(Vector m, Vector n) {
-        if (compare(m, n) == 0) {
-            return m.size();
-        } else {
-            return n.size();
-        }
-    }
-
-    @Override
-    public int compare(Vector m, Vector n) { // method for compare vectors
-        if (n.size() <= m.size()) {
-            return 0;
-        } else {
-            return 1;
-        }
-    }
+   
 
     @Override
     public int size() { // for length array
         return mas.length;
     }
 
-    @Override
-    public int minSize(Vector m, Vector n) {
-        if (compare(m, n) == 0) {
-            return n.size();
-        } else {
-            return m.size();
-        }
-    }
+    
 
     @Override
     public double getValue(int index) {

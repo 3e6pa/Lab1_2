@@ -38,6 +38,11 @@ public class Vectors {
     public static Vector createInstance(){
         return vectorFactory.newList();
     }
+    
+    public static Vector getAdaptedJVector(java.util.Vector jVector){
+        Vector vector = (Vector) jVector.clone();
+        return vector;
+    }
 
     public static Vector sumVetors(Vector m, Vector n) {
         Vector vect = createInstance(maxSize(m, n));
