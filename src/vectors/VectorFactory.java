@@ -11,4 +11,6 @@ package vectors;
  */
 public interface VectorFactory {
      Vector newVector (int size);
+     
+     Vector newList ();
 }

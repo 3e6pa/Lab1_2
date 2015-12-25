@@ -16,4 +16,9 @@ public class ArrayVectorFactory implements VectorFactory{
         return new ArrayVector(size);
     }
     
+    @Override
+    public Vector newList(){
+        return new LinkedListVector();
+    }
+    
 }

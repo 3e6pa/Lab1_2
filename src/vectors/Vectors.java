@@ -34,6 +34,10 @@ public class Vectors {
     public static Vector createInstance(int size){
         return vectorFactory.newVector(size);
     }
+    
+    public static Vector createInstance(){
+        return vectorFactory.newList();
+    }
 
     public static Vector sumVetors(Vector m, Vector n) {
         Vector vect = createInstance(maxSize(m, n));
@@ -70,11 +74,9 @@ public class Vectors {
         Vector result;
         try (DataInputStream streamIn = new DataInputStream(in)) {
             int size = streamIn.readInt();
-            result = new ArrayVector(/*streamIn.readInt()*/);
-          //  System.out.println(streamIn.readInt());
-          
+            result = createInstance();
             for (int i = 0; i<size; i++){
-                result.add(streamIn.readDouble(), i);
+                result.addLast(streamIn.readDouble());
                 //System.out.println(result.getValue(i));
                         
             }
@@ -93,14 +95,12 @@ public class Vectors {
     }
     
     public static Vector readVector(Reader in) throws IOException{
-        
-        BufferedReader bufRead = new BufferedReader(in);
-        StreamTokenizer token = new StreamTokenizer(bufRead);     
-        Vector buf = new LinkedListVector();
+        StreamTokenizer token = new StreamTokenizer(in);     
+        Vector buf = createInstance();
         while (token.nextToken() != token.TT_EOF){
              buf.addLast(token.nval);
         }
-        Vector vect = new ArrayVector();
+        Vector vect = createInstance();
         for (double val : buf){
             vect.addLast(val);
         }
