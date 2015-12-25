@@ -91,6 +91,11 @@ public class Lab1_2 {
         myAdapter.add(0, 2);
         myAdapter.show();
         
+        Vector testProtect = new ProtectedVector(myAdapter);
         
+        testProtect.addLast(2525);
+        testProtect.show();
+        myAdapter.addLast(55);
+        testProtect.show();
     }
 }
