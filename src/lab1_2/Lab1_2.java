@@ -5,6 +5,9 @@
  */
 package lab1_2;
 
+import pattern.JVectorAdapter;
+import pattern.ProtectedVector;
+import utilits.Vectors;
 import generics.*;
 import java.io.File;
 import java.io.FileInputStream;

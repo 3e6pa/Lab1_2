@@ -3,7 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package vectors;
+package pattern;
+
+import pattern.VectorFactory;
+import vectors.ArrayVector;
+import vectors.LinkedListVector;
+import vectors.Vector;
 
 /**
  *

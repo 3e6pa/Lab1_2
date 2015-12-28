@@ -3,14 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package vectors;
+package pattern;
 
 /**
  *
  * @author viks
  */
-public interface VectorFactory {
-     Vector newVector (int size);
-     
-     Vector newList ();
+public class SingletonVector {
+    
 }
