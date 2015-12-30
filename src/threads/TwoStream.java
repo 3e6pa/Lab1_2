@@ -5,6 +5,8 @@
  */
 package threads;
 
+import pattern.SingletonVector;
+
 /**
  *
  * @author viks
@@ -13,7 +15,7 @@ public class TwoStream extends Thread{
     
     @Override
     public void run(){
-        
+        SingletonVector.show();
     }
     
 }

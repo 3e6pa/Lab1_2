@@ -19,6 +19,8 @@ import java.io.InvalidObjectException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import threads.OneStream;
+import threads.TwoStream;
 import vectors.*;
 
 /**
@@ -100,5 +102,11 @@ public class Lab1_2 {
         testProtect.show();
         myAdapter.addLast(55);
         testProtect.show();
+        
+        OneStream stream1 = new OneStream();
+        stream1.start();
+        
+        TwoStream stream2 = new TwoStream();
+        stream2.start();
     }
 }

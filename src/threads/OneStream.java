@@ -5,6 +5,7 @@
  */
 package threads;
 
+import pattern.SingletonVector;
 import vectors.ArrayVector;
 import vectors.Vector;
 import utilits.Vectors;
@@ -14,9 +15,10 @@ import utilits.Vectors;
  * @author viks
  */
 public class OneStream extends Thread{
-    Vector vect = new ArrayVector(10);
+  
     @Override
     public void run(){
-      vect = Vectors.rundom(10, 1,100 );
+      SingletonVector.rundom(10, 1,100 );
+  
     }
 }

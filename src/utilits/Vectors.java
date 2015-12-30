@@ -142,7 +142,7 @@ public class Vectors {
         Vector vect = createInstance(size);
         for (int i = 0; i<size; i++){
             vect.addLast(min + (int)(Math.random() * ((max - min) + 1))); // int, caz so good look it
-            System.out.println("Write: "+min + (int)(Math.random() * ((max - min) + 1))+" to position "+i);
+            System.out.println("Write: "+(min + (int)(Math.random() * ((max - min) + 1)))+" to position "+i);
         }
         return (Vector) vect;
     }
