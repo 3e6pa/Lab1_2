@@ -48,6 +48,7 @@ public class ArrayVector implements Vector, Serializable  {
             incArray(pos + 2);
         }
         mas[++pos] = value;
+       // System.out.println("value" + value);
     }
 
     @Override

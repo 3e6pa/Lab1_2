@@ -8,6 +8,7 @@ package pattern;
 import utilits.Vectors;
 import static utilits.Vectors.createInstance;
 import vectors.ArrayVector;
+import vectors.LinkedListVector;
 import vectors.Vector;
 
 /**
@@ -19,20 +20,27 @@ public class SingletonVector {
     private static Vector vector;
 
     private SingletonVector() {
+        
     }
 
     public static Vector getInstance() {
         if (vector == null) {
-            vector = new ArrayVector();
+            vector  = new ArrayVector();
         }
         return vector;
     }
     
     public static void rundom(int size, double min, double max ){
+        if (vector==null) vector = new ArrayVector();
         vector = Vectors.rundom(size, min, max);
+     //  vector.show();
     }
     
     public static void show(){
-        vector.show();
+        int i = 0;
+        for (double val : vector){
+            System.out.println("Read: "+ val+ " from position "+i++);
+        }
+        //System.out.println("end stream");
     }
 }

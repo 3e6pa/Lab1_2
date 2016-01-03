@@ -15,10 +15,11 @@ import utilits.Vectors;
  * @author viks
  */
 public class OneStream extends Thread{
-  
+   
     @Override
     public void run(){
-      SingletonVector.rundom(10, 1,100 );
+      SingletonVector.rundom(1000, 1,100 );
+      System.out.println("Finish one stream");
   
     }
 }
