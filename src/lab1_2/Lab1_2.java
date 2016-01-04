@@ -20,8 +20,11 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import static java.lang.Thread.MAX_PRIORITY;
 import static java.lang.Thread.MIN_PRIORITY;
+import static java.lang.Thread.State.WAITING;
 import java.util.ArrayList;
+import threads.OneNewStream;
 import threads.OneStream;
+import threads.TwoNewStream;
 import threads.TwoStream;
 import vectors.*;
 
@@ -30,11 +33,12 @@ import vectors.*;
  * @author User
  */
 public class Lab1_2 {
+
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
-     /*   ArrayVector vect = new ArrayVector(1,2,3,4,5,6,7,8,9,10,11,12,13,14);
+        /*   ArrayVector vect = new ArrayVector(1,2,3,4,5,6,7,8,9,10,11,12,13,14);
         try {
         FileOutputStream file = new FileOutputStream("vectByte.txt");
         Vectors.outputVector(vect, file);
@@ -104,12 +108,12 @@ public class Lab1_2 {
         testProtect.show();
         myAdapter.addLast(55);
         testProtect.show();*/
+
+       Thread stream1 = new Thread( new OneNewStream());
+       Thread stream2 = new Thread( new TwoNewStream());
+       stream1.start();
+       stream2.start();
         
-        OneStream stream1 = new OneStream();
-        stream1.setPriority(MAX_PRIORITY);
-        stream1.start();
-        TwoStream stream2 = new TwoStream();
-        stream2.setPriority(MIN_PRIORITY);
-        stream2.start();
+      
     }
 }

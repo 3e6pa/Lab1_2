@@ -5,6 +5,8 @@
  */
 package threads;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import pattern.SingletonVector;
 import vectors.ArrayVector;
 import vectors.LinkedListVector;
@@ -17,6 +19,11 @@ public class TwoStream extends Thread{
     
     @Override
     public void run(){
+        try {
+            Thread.sleep(10);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(TwoStream.class.getName()).log(Level.SEVERE, null, ex);
+        }
         ArrayVector vector = (ArrayVector) SingletonVector.getInstance();
         int i = 0;
         for (double val : vector){
