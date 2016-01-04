@@ -23,7 +23,7 @@ public class SingletonVector {
 
     private static int pos=-1;
     private static Vector vector;
-    public static boolean canWrite = true;
+    public volatile static boolean canWrite = true;
     
     OneNewStream oneStream;
     TwoNewStream twoStream;
@@ -46,18 +46,17 @@ public class SingletonVector {
         vector = Vectors.rundom(size, min, max);
     }
 /*****************************************************************/
-    public static  void write(double value) {
+    public static synchronized void write(double value) {
         pos++;
         if (vector == null) {
-            vector = new ArrayVector();
+            vector = new LinkedListVector();
         }
-        vector.add(value, pos);
+        vector.addLast(value);
         System.out.println("Write: " + value + " to position " + pos);
-        canWrite = false;
-        
+        canWrite = false;       
     }
     
-    public static  void read() {
+    public static synchronized void read() {
         if (vector == null) {
             System.out.println("Dont initialization vector!!!");
         } else {

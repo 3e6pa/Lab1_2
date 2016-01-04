@@ -17,11 +17,14 @@ public class OneNewStream implements Runnable {
 
     @Override
     public void run() {
-        for (int i = 0; i < 10;) {
+        
+        for (int i = 0; i < 10000;) {
             while (SingletonVector.canWrite) {
-                double value = (1 + (int) (Math.random() * ((1000 - 0) + 1)));// int, caz so good look it
-                SingletonVector.write(value);
-                i++;
+                    double value = (1 + (int) (Math.random() * ((1000 - 0) + 1)));// int, caz so good look it
+                    SingletonVector.write(value);
+                    //Thread.sleep(1000);
+                    i++;
+              
             }
         }
  }
