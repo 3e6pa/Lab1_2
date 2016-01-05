@@ -21,12 +21,14 @@ import vectors.Vector;
  */
 public class SingletonVector {
 
-    private static int pos=-1;
+    private static int pos = -1;
     private static Vector vector;
+    public volatile static boolean check = true;
     public volatile static boolean canWrite = true;
-    
-    OneNewStream oneStream;
-    TwoNewStream twoStream;
+    public static int size;
+    public static Thread stream1 = new Thread(new OneNewStream());
+    public static Thread stream2 = new Thread(new TwoNewStream());
+    private static Object lock = new Object();
 
     private SingletonVector() {
     }
@@ -45,26 +47,62 @@ public class SingletonVector {
         }
         vector = Vectors.rundom(size, min, max);
     }
-/*****************************************************************/
-    public static synchronized void write(double value) {
+
+    /**
+     * **************************************************************
+     */
+    
+    
+    public static void write(double value) {
+        synchronized (lock) {
+            if (canWrite) {
+                try {
+                    while(check)
+                    lock.wait();
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(SingletonVector.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
         pos++;
         if (vector == null) {
             vector = new LinkedListVector();
         }
         vector.addLast(value);
         System.out.println("Write: " + value + " to position " + pos);
-        canWrite = false;       
+        canWrite = false;
+        lock.notifyAll();
+        }
     }
-    
-    public static synchronized void read() {
+
+    public static void read() {
+        synchronized (lock) {
+            if (!canWrite) {
+                try {
+                    lock.wait();
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(SingletonVector.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        
         if (vector == null) {
             System.out.println("Dont initialization vector!!!");
         } else {
             System.out.println("Read: " + vector.getValue(pos) + " from position " + pos);
         }
+        if (pos == 10){
+            check = false;
+        }
+        //System.out.println("--------------------------------------------");
         canWrite = true;
+        lock.notifyAll();
+        }
     }
-/***********************************************************************/
+    
+
+    /**
+     * ********************************************************************
+     */
     public static synchronized double getValue(int i) {
         return vector.getValue(i);
     }

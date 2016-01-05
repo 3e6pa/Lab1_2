@@ -22,6 +22,7 @@ import static java.lang.Thread.MAX_PRIORITY;
 import static java.lang.Thread.MIN_PRIORITY;
 import static java.lang.Thread.State.WAITING;
 import java.util.ArrayList;
+import pattern.SingletonVector;
 import threads.OneNewStream;
 import threads.OneStream;
 import threads.TwoNewStream;
@@ -109,10 +110,9 @@ public class Lab1_2 {
         myAdapter.addLast(55);
         testProtect.show();*/
 
-       Thread stream1 = new Thread( new OneNewStream());
-       Thread stream2 = new Thread( new TwoNewStream());
-       stream1.start();
-       stream2.start();
+       SingletonVector.size = 10000;
+       SingletonVector.stream1.start();
+       SingletonVector.stream2.start();
         
       
     }
