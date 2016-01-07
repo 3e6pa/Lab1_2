@@ -22,6 +22,7 @@ import vectors.ArrayVector;
 import pattern.ArrayVectorFactory;
 import vectors.Vector;
 import pattern.VectorFactory;
+import pattern.WrapperVector;
 
 /**
  *
@@ -45,6 +46,11 @@ public class Vectors {
     public static Vector getAdaptedJVector(java.util.Vector jVector){
         Vector vector = (Vector) jVector.clone();
         return vector;
+    }
+    
+    public static Vector synchronizedVector(Vector vector) {
+        Vector threadVector = new WrapperVector(vector);
+        return threadVector;
     }
 
     public static Vector sumVetors(Vector m, Vector n) {
