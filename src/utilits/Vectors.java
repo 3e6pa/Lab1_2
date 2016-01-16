@@ -103,8 +103,9 @@ public class Vectors {
     public static void writeVector(Vector m, Writer out){
         PrintWriter output = new PrintWriter( new BufferedWriter(out));
         for (double val : m){
-            output.print(val+" ");
+            output.write(val+" ");
         }
+        output.println();
         output.close();
     }
     
@@ -118,7 +119,7 @@ public class Vectors {
         for (double val : buf){
             vect.addLast(val);
         }
-        return vect;
+        return buf;
     }
     
 

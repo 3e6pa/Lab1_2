@@ -39,8 +39,8 @@ public class Lab1_2 {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
-        /*   ArrayVector vect = new ArrayVector(1,2,3,4,5,6,7,8,9,10,11,12,13,14);
-        try {
+        //  Vector vect = Vectors.rundom(10, 0 ,100);
+        /*     try {
         FileOutputStream file = new FileOutputStream("vectByte.txt");
         Vectors.outputVector(vect, file);
         }catch (IOException e) {
@@ -58,23 +58,28 @@ public class Lab1_2 {
             System.out.println("Хрень какая то: "+e);
             
         }
-        
-        try{
-        FileWriter file2 = new FileWriter("vectSymble.txt");
-        Vectors.writeVector(vect, file2);
-        }catch (IOException e) {
-            System.out.println("Чет не то: "+e);     
+         */
+        int count = 4;
+        for (int i = 0; i < count; i++) {
+            Vector vect = Vectors.rundom(10, 0, 100);
+            try {
+                FileWriter file2 = new FileWriter("vectSymble.txt", true);
+                Vectors.writeVector(vect, file2);
+            } catch (IOException e) {
+                System.out.println("Чет не то: " + e);
+            }
         }
-         Vector vect2  ;
+
+        Vector vect2;
         try {
-        FileReader vectSymble= new FileReader("vectSymble.txt");       
-        vect2 = Vectors.readVector(vectSymble);
-        vect2.show();
-        }catch (IOException e) {
-            System.out.println("Хрень какая то: "+e);
-            
+            FileReader vectSymble = new FileReader("vectSymble.txt");
+            vect2 = Vectors.readVector(vectSymble);
+            vect2.show();
+        } catch (IOException e) {
+            System.out.println("Хрень какая то: " + e);
+
         }
-        
+        /*
         LinkedListVector vectL = new LinkedListVector(1,2,3,4,5,6,7,8,9,10,11,12,13,14);
         System.out.println("*************Serialization**********(in file)");
         ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("vectObject.obj"));
@@ -110,10 +115,9 @@ public class Lab1_2 {
         myAdapter.addLast(55);
         testProtect.show();*/
 
-       SingletonVector.size = 10000;
-       SingletonVector.stream1.start();
-       SingletonVector.stream2.start();
-        
-      
+       /* SingletonVector.size = 10000;
+        SingletonVector.stream1.start();
+        SingletonVector.stream2.start();
+*/
     }
 }
