@@ -5,16 +5,20 @@
  */
 package lab1_2;
 
-import pattern.JVectorAdapter;
-import pattern.ProtectedVector;
+
 import utilits.Vectors;
-import generics.*;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
+
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import vectors.Vector;
+/*import generics.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+
+import pattern.JVectorAdapter;
+import pattern.ProtectedVector;
 import java.io.InvalidObjectException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -37,8 +41,9 @@ public class Lab1_2 {
 
     /**
      * @param args the command line arguments
-     */
-    public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
+     *///throws IOException, ClassNotFoundException, InterruptedException
+    public static void main(String[] args)   {
+        System.out.println("Hello world!");
         //  Vector vect = Vectors.rundom(10, 0 ,100);
         /*     try {
         FileOutputStream file = new FileOutputStream("vectByte.txt");
@@ -58,7 +63,7 @@ public class Lab1_2 {
             System.out.println("Хрень какая то: "+e);
             
         }
-         */
+        */
         int count = 4;
         for (int i = 0; i < count; i++) {
             Vector vect = Vectors.rundom(10, 0, 100);
@@ -78,7 +83,7 @@ public class Lab1_2 {
         } catch (IOException e) {
             System.out.println("Хрень какая то: " + e);
 
-        }
+        } 
         /*
         LinkedListVector vectL = new LinkedListVector(1,2,3,4,5,6,7,8,9,10,11,12,13,14);
         System.out.println("*************Serialization**********(in file)");
